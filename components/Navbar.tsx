@@ -26,35 +26,25 @@ export default function Navbar() {
       <style>{`
         .np-nav {
           position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
-          /* fosco base — sempre semi-transparente para deixar o fundo aparecer */
-          background: rgba(248, 249, 252, 0.72);
+          background: rgba(4, 7, 14, 0.72);
           backdrop-filter: blur(22px) saturate(180%);
           -webkit-backdrop-filter: blur(22px) saturate(180%);
-          border-bottom: 1px solid rgba(0,0,0,0.07);
+          border-bottom: 1px solid rgba(255,255,255,0.06);
           transition: background 0.35s, box-shadow 0.35s;
         }
         .np-nav.scrolled {
-          background: rgba(248, 249, 252, 0.82);
-          box-shadow: 0 1px 24px rgba(0,0,0,0.07);
-        }
-        /* ruído tipo fosco sobre o vidro */
-        .np-nav::after {
-          content: '';
-          position: absolute; inset: 0;
-          pointer-events: none; z-index: 0;
-          opacity: 0.04;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-          background-size: 180px;
+          background: rgba(4, 7, 14, 0.92);
+          box-shadow: 0 1px 24px rgba(0,0,0,0.4);
         }
         .np-nav > div { position: relative; z-index: 1; }
         .np-nav-link {
-          color: #2C3357;
+          color: rgba(255,255,255,0.6);
           font-size: 12px; font-weight: 500;
           letter-spacing: 0.02em;
           text-decoration: none;
           transition: color .2s;
         }
-        .np-nav-link:hover { color: #1B3F6F; }
+        .np-nav-link:hover { color: #fff; }
         @media (max-width: 768px) {
           .np-nav > div { padding: 0 24px !important; }
         }
@@ -67,7 +57,7 @@ export default function Navbar() {
         }}>
           <a href="#home" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
             <Image
-              src="/logo-dark.png" alt="Neo Power"
+              src="/logo-white.png" alt="Neo Power"
               width={96} height={68}
               style={{ height: 30, width: 'auto', objectFit: 'contain' }}
               priority
@@ -93,7 +83,7 @@ export default function Navbar() {
             aria-label="Menu"
           >
             {[0, 1, 2].map(i => (
-              <span key={i} style={{ display: 'block', width: 20, height: 1.5, background: '#2C3357', borderRadius: 99 }} />
+              <span key={i} style={{ display: 'block', width: 20, height: 1.5, background: 'rgba(255,255,255,0.7)', borderRadius: 99 }} />
             ))}
           </button>
         </div>

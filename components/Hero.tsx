@@ -59,7 +59,7 @@ const metrics = [
 
 export default function Hero() {
   return (
-    <section id="home" style={{ position: 'relative', height: '100vh', minHeight: 560, overflow: 'hidden' }}>
+    <section id="home" style={{ position: 'relative', height: '100svh', minHeight: 560, overflow: 'clip' }}>
 
       {/* ── Vídeo ── */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0, overflow: 'hidden' }}>
@@ -106,7 +106,7 @@ export default function Hero() {
           </p>
 
           {/* Título com hierarquia de peso */}
-          <h1 style={{ marginBottom: 20, maxWidth: 560 }}>
+          <h1 style={{ marginBottom: 20, maxWidth: 560, fontSize: 'inherit', fontWeight: 'inherit' }}>
             <span style={{
               display: 'block',
               fontSize: 'clamp(18px,1.9vw,26px)',
