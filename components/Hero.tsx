@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 
-/* ── Contador animado ────────────────────────────────────── */
 function MetricCounter({
   num, suffix, label, index,
 }: { num: number; suffix: string; label: string; index: number }) {
@@ -59,9 +58,9 @@ const metrics = [
 
 export default function Hero() {
   return (
-    <section id="home" style={{ position: 'relative', height: '100svh', minHeight: 560, overflow: 'clip' }}>
+    <section id="home" style={{ position: 'relative', height: '100svh', minHeight: 600 }}>
 
-      {/* ── Vídeo ── */}
+      {/* Vídeo */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0, overflow: 'hidden' }}>
         <iframe
           src="https://www.youtube.com/embed/FDFZO3nxbZk?autoplay=1&mute=1&loop=1&playlist=FDFZO3nxbZk&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0&playsinline=1"
@@ -77,23 +76,23 @@ export default function Hero() {
         />
       </div>
 
-      {/* ── Overlays ── */}
+      {/* Overlays */}
       <div style={{ position:'absolute', inset:0, zIndex:1, background:'linear-gradient(110deg,rgba(4,7,14,0.92) 0%,rgba(4,7,14,0.72) 50%,rgba(4,7,14,0.32) 100%)' }} />
-      {/* top half darkening overlay */}
       <div style={{ position:'absolute', top:0, left:0, right:0, height:'55%', zIndex:1, background:'linear-gradient(to bottom,rgba(4,7,14,0.72) 0%,transparent 100%)' }} />
       <div style={{ position:'absolute', bottom:0, left:0, right:0, height:'45%', zIndex:1, background:'linear-gradient(to top,rgba(4,7,14,1) 0%,transparent 100%)' }} />
       <div style={{ position:'absolute', top:'10%', left:'0', zIndex:1, width:500, height:500, background:'radial-gradient(ellipse,rgba(27,63,111,0.16) 0%,transparent 70%)', pointerEvents:'none' }} />
 
-      {/* ── Conteúdo — posicionado no topo-esquerdo, abaixo da navbar ── */}
-      <div style={{
+      {/* Conteúdo */}
+      <div className="hero-content" style={{
         position: 'absolute',
-        top: 64, left: 0, right: 0,
+        top: 68, left: 0, right: 0, bottom: 90,
         zIndex: 2,
-        paddingTop: 72,
+        display: 'flex',
+        alignItems: 'center',
+        overflow: 'hidden',
       }}>
         <div className="wrap">
 
-          {/* Label */}
           <p style={{
             display: 'flex', alignItems: 'center', gap: 10,
             fontSize: 10, fontWeight: 700,
@@ -105,11 +104,10 @@ export default function Hero() {
             Engenharia Solar — Alto Padrão
           </p>
 
-          {/* Título com hierarquia de peso */}
           <h1 style={{ marginBottom: 20, maxWidth: 560, fontSize: 'inherit', fontWeight: 'inherit' }}>
             <span style={{
               display: 'block',
-              fontSize: 'clamp(18px,1.9vw,26px)',
+              fontSize: 'clamp(16px,1.9vw,26px)',
               fontWeight: 500,
               color: 'rgba(255,255,255,0.68)',
               lineHeight: 1.2,
@@ -121,7 +119,7 @@ export default function Hero() {
             </span>
             <span style={{
               display: 'block',
-              fontSize: 'clamp(22px,2.5vw,34px)',
+              fontSize: 'clamp(20px,2.5vw,34px)',
               fontWeight: 800,
               color: '#fff',
               lineHeight: 1.1,
@@ -135,7 +133,7 @@ export default function Hero() {
           <p style={{ fontSize: 14.5, fontWeight: 400, color: 'rgba(255,255,255,0.58)', maxWidth: 420, lineHeight: 1.75, marginBottom: 10 }}>
             O rigor da engenharia industrial aplicado à proteção de patrimônios de luxo.
           </p>
-          <p style={{ fontSize: 12.5, fontWeight: 400, color: 'rgba(255,255,255,0.28)', maxWidth: 420, lineHeight: 1.85, marginBottom: 34 }}>
+          <p className="hero-desc" style={{ fontSize: 12.5, fontWeight: 400, color: 'rgba(255,255,255,0.28)', maxWidth: 420, lineHeight: 1.85, marginBottom: 34 }}>
             Projetos de Média e Baixa Tensão com supervisão técnica e assinatura de diretoria. Não somos distribuidores de equipamentos. Projetamos, executamos e auditamos sistemas sob nosso Protocolo Proprietário, onde a margem de erro é zero e a estética da sua propriedade é intocável.
           </p>
 
@@ -143,14 +141,10 @@ export default function Hero() {
             <a href="#contato" className="btn-primary">Solicitar Auditoria Técnica</a>
             <a href="#solucoes" className="btn-ghost">Ver Soluções</a>
           </div>
-
-          <p style={{ marginTop: 32, fontSize: 9, fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.14)' }}>
-            Fotografia autoral — Usina residencial de alto padrão
-          </p>
         </div>
       </div>
 
-      {/* ── Barra de métricas ── */}
+      {/* Barra de métricas */}
       <div className="metrics-bar" style={{
         position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 3,
         display: 'grid',
@@ -168,10 +162,9 @@ export default function Hero() {
       </div>
 
       <style>{`
-        /* ── Mobile ── */
         @media (max-width: 768px) {
           #home { min-height: 100svh; }
-
+          .hero-desc { display: none; }
           .hero-btns {
             display: flex;
             flex-direction: column;
@@ -180,24 +173,16 @@ export default function Hero() {
             max-width: 320px;
           }
           .hero-btns a { width: 100%; justify-content: center; }
-
-          .metrics-bar {
-            grid-template-columns: 1fr 1fr !important;
-          }
+          .metrics-bar { grid-template-columns: 1fr 1fr !important; }
           .metrics-bar > div:nth-child(2) { border-right: none !important; }
           .metrics-bar > div:nth-child(1),
-          .metrics-bar > div:nth-child(2) {
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-          }
+          .metrics-bar > div:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.05); }
         }
-
-        @media (max-width: 480px) {
-          .metrics-bar > div > div:first-child { font-size: 24px !important; }
-        }
-
-        /* Desktop — botões lado a lado */
         @media (min-width: 769px) {
           .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+        }
+        @media (max-height: 650px) {
+          .hero-desc { display: none; }
         }
       `}</style>
     </section>
