@@ -1,6 +1,7 @@
 'use client'
-import Image from 'next/image'
 import Link from 'next/link'
+
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
 const menuLinks = [
   { label: 'Home', href: '/' },
@@ -28,8 +29,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <Image
-              src="/logo-white.png" alt="Neo Power"
+            <img
+              src={`${BASE}/logo-white.png`} alt="Neo Power"
               width={110} height={78}
               style={{ height: 36, width: 'auto', objectFit: 'contain', marginBottom: 18 }}
             />

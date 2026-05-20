@@ -1,7 +1,8 @@
 'use client'
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
+
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
 const links = [
   { label: 'Home', href: '/' },
@@ -56,11 +57,10 @@ export default function NavbarInner() {
           height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>
           <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-            <Image
-              src="/logo-white.png" alt="Neo Power"
+            <img
+              src={`${BASE}/logo-white.png`} alt="Neo Power"
               width={96} height={68}
               style={{ height: 30, width: 'auto', objectFit: 'contain' }}
-              priority
             />
           </Link>
 
