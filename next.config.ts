@@ -1,6 +1,9 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  output: 'export',
+  basePath: '/neopower',
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },

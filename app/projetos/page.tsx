@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import NavbarInner from '@/components/NavbarInner'
 import Footer from '@/components/Footer'
 import RevealObserver from '@/components/RevealObserver'
@@ -193,8 +194,8 @@ export default function Projetos() {
             Aplique o Mesmo Protocolo<br />no Seu Projeto.
           </h2>
           <div className="reveal" style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap', marginTop: 28 }}>
-            <a href="/contato" className="btn-primary">Solicitar Auditoria Técnica</a>
-            <a href="/servicos" className="btn-ghost">Ver Nossos Serviços</a>
+            <Link href="/contato" className="btn-primary">Solicitar Auditoria Técnica</Link>
+            <Link href="/servicos" className="btn-ghost">Ver Nossos Serviços</Link>
           </div>
         </div>
       </section>

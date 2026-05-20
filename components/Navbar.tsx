@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const links = [
   { label: 'Home', href: '#home' },
@@ -72,9 +73,9 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <a href="#contato" className="btn-primary hide-mobile" style={{ padding: '10px 20px', fontSize: 11, flexShrink: 0 }}>
+          <Link href="/contato" className="btn-primary hide-mobile" style={{ padding: '10px 20px', fontSize: 11, flexShrink: 0 }}>
             Solicitar Auditoria
-          </a>
+          </Link>
 
           <button
             className="hide-desktop"
@@ -94,7 +95,7 @@ export default function Navbar() {
         {links.map(l => (
           <a key={l.label} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
         ))}
-        <a href="#contato" onClick={() => setOpen(false)} className="btn-primary">Solicitar Auditoria</a>
+        <Link href="/contato" onClick={() => setOpen(false)} className="btn-primary">Solicitar Auditoria</Link>
       </div>
     </>
   )

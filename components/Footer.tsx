@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const menuLinks = [
   { label: 'Home', href: '/' },
@@ -61,13 +62,13 @@ export default function Footer() {
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 13 }}>
               {menuLinks.map(l => (
                 <li key={l.label}>
-                  <a href={l.href} style={{
+                  <Link href={l.href} style={{
                     fontSize: 13.5, fontWeight: 400, color: 'var(--text-lo)',
                     textDecoration: 'none', transition: 'color 0.2s',
                   }}
                     onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-hi)')}
                     onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-lo)')}
-                  >{l.label}</a>
+                  >{l.label}</Link>
                 </li>
               ))}
             </ul>
@@ -98,10 +99,10 @@ export default function Footer() {
             © 2026 Neo Power · CNPJ 40.904.108/0001-23 · Todos os direitos reservados.
           </span>
           <div style={{ display: 'flex', gap: 20, alignItems: 'center', flexWrap: 'wrap' }}>
-            <a href="/politicas" style={{ fontSize: 11.5, color: 'var(--text-lo)', opacity: 0.6, textDecoration: 'none', transition: 'opacity .2s' }}
+            <Link href="/politicas" style={{ fontSize: 11.5, color: 'var(--text-lo)', opacity: 0.6, textDecoration: 'none', transition: 'opacity .2s' }}
               onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
               onMouseLeave={e => (e.currentTarget.style.opacity = '0.6')}
-            >Políticas de Privacidade</a>
+            >Políticas de Privacidade</Link>
             <span style={{ fontSize: 11.5, color: 'var(--text-lo)', opacity: 0.6 }}>Itaipava · Petrópolis · RJ</span>
           </div>
         </div>

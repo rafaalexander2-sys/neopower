@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const links = [
   { label: 'Home', href: '/' },
@@ -54,26 +55,26 @@ export default function NavbarInner() {
           maxWidth: 1120, margin: '0 auto', padding: '0 64px',
           height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>
-          <a href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+          <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
             <Image
               src="/logo-white.png" alt="Neo Power"
               width={96} height={68}
               style={{ height: 30, width: 'auto', objectFit: 'contain' }}
               priority
             />
-          </a>
+          </Link>
 
           <ul className="hide-mobile" style={{ listStyle: 'none', display: 'flex', gap: 36, alignItems: 'center', margin: '0 auto' }}>
             {links.map(l => (
               <li key={l.label}>
-                <a href={l.href} className="np-nav-link">{l.label}</a>
+                <Link href={l.href} className="np-nav-link">{l.label}</Link>
               </li>
             ))}
           </ul>
 
-          <a href="/contato" className="btn-primary hide-mobile" style={{ padding: '10px 20px', fontSize: 11, flexShrink: 0 }}>
+          <Link href="/contato" className="btn-primary hide-mobile" style={{ padding: '10px 20px', fontSize: 11, flexShrink: 0 }}>
             Solicitar Auditoria
-          </a>
+          </Link>
 
           <button
             className="hide-desktop"
@@ -91,9 +92,9 @@ export default function NavbarInner() {
       <div className={`mobile-overlay${open ? ' open' : ''}`}>
         <button onClick={() => setOpen(false)} style={{ position: 'absolute', top: 22, right: 22, background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.4)', fontSize: 22 }}>✕</button>
         {links.map(l => (
-          <a key={l.label} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
+          <Link key={l.label} href={l.href} onClick={() => setOpen(false)}>{l.label}</Link>
         ))}
-        <a href="/contato" onClick={() => setOpen(false)} className="btn-primary">Solicitar Auditoria</a>
+        <Link href="/contato" onClick={() => setOpen(false)} className="btn-primary">Solicitar Auditoria</Link>
       </div>
     </>
   )

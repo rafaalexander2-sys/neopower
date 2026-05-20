@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import NavbarInner from '@/components/NavbarInner'
 import Footer from '@/components/Footer'
 import RevealObserver from '@/components/RevealObserver'
@@ -201,8 +202,8 @@ export default function Servicos() {
             Nem todo projeto se enquadra no protocolo Neo Power. Solicite uma análise técnica gratuita e descubra se o seu perfil de consumo justifica a nossa engenharia.
           </p>
           <div className="reveal" style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="/contato" className="btn-primary">Solicitar Análise Técnica Gratuita</a>
-            <a href="/projetos" className="btn-ghost">Ver Projetos Realizados</a>
+            <Link href="/contato" className="btn-primary">Solicitar Análise Técnica Gratuita</Link>
+            <Link href="/projetos" className="btn-ghost">Ver Projetos Realizados</Link>
           </div>
         </div>
       </section>
