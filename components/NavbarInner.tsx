@@ -4,14 +4,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const links = [
-  { label: 'Home', href: '#home' },
-  { label: 'Soluções', href: '#solucoes' },
-  { label: 'Protocolo', href: '#protocolo' },
-  { label: 'Casos', href: '#casos' },
+  { label: 'Home', href: '/' },
+  { label: 'Soluções', href: '/#solucoes' },
+  { label: 'Protocolo', href: '/#protocolo' },
+  { label: 'Casos', href: '/#casos' },
   { label: 'Contato', href: '/contato' },
 ]
 
-export default function Navbar() {
+export default function NavbarInner() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -23,7 +23,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── Estilos do efeito fosco ── */}
       <style>{`
         .np-nav {
           position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
@@ -56,19 +55,19 @@ export default function Navbar() {
           maxWidth: 1120, margin: '0 auto', padding: '0 64px',
           height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>
-          <a href="#home" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+          <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
             <Image
               src="/logo-white.png" alt="Neo Power"
               width={96} height={68}
               style={{ height: 30, width: 'auto', objectFit: 'contain' }}
               priority
             />
-          </a>
+          </Link>
 
           <ul className="hide-mobile" style={{ listStyle: 'none', display: 'flex', gap: 36, alignItems: 'center', margin: '0 auto' }}>
             {links.map(l => (
               <li key={l.label}>
-                <a href={l.href} className="np-nav-link">{l.label}</a>
+                <Link href={l.href} className="np-nav-link">{l.label}</Link>
               </li>
             ))}
           </ul>
@@ -93,7 +92,7 @@ export default function Navbar() {
       <div className={`mobile-overlay${open ? ' open' : ''}`}>
         <button onClick={() => setOpen(false)} style={{ position: 'absolute', top: 22, right: 22, background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(255,255,255,0.4)', fontSize: 22 }}>✕</button>
         {links.map(l => (
-          <a key={l.label} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
+          <Link key={l.label} href={l.href} onClick={() => setOpen(false)}>{l.label}</Link>
         ))}
         <Link href="/contato" onClick={() => setOpen(false)} className="btn-primary">Solicitar Auditoria</Link>
       </div>
