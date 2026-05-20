@@ -24,6 +24,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /neopower
 
       - name: Deploy para GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
