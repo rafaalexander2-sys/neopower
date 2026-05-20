@@ -2,12 +2,12 @@
 import Image from 'next/image'
 
 const menuLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Quem Somos', href: '#quem-somos' },
-  { label: 'Projetos', href: '#projetos' },
-  { label: 'Serviços', href: '#servicos' },
-  { label: 'Blog', href: '#blog' },
-  { label: 'Contato', href: '#contato' },
+  { label: 'Home', href: '/' },
+  { label: 'Quem Somos', href: '/quem-somos' },
+  { label: 'Projetos', href: '/projetos' },
+  { label: 'Serviços', href: '/servicos' },
+  { label: 'Contato', href: '/contato' },
+  { label: 'Políticas', href: '/politicas' },
 ]
 
 export default function Footer() {
@@ -97,9 +97,13 @@ export default function Footer() {
           <span style={{ fontSize: 11.5, color: 'var(--text-lo)', opacity: 0.6 }}>
             © 2026 Neo Power · CNPJ 40.904.108/0001-23 · Todos os direitos reservados.
           </span>
-          <span style={{ fontSize: 11.5, color: 'var(--text-lo)', opacity: 0.6 }}>
-            Itaipava · Petrópolis · RJ
-          </span>
+          <div style={{ display: 'flex', gap: 20, alignItems: 'center', flexWrap: 'wrap' }}>
+            <a href="/politicas" style={{ fontSize: 11.5, color: 'var(--text-lo)', opacity: 0.6, textDecoration: 'none', transition: 'opacity .2s' }}
+              onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
+              onMouseLeave={e => (e.currentTarget.style.opacity = '0.6')}
+            >Políticas de Privacidade</a>
+            <span style={{ fontSize: 11.5, color: 'var(--text-lo)', opacity: 0.6 }}>Itaipava · Petrópolis · RJ</span>
+          </div>
         </div>
       </div>
 

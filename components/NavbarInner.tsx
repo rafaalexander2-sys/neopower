@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 const links = [
-  { label: 'Home', href: '#home' },
-  { label: 'Soluções', href: '#solucoes' },
-  { label: 'Protocolo', href: '#protocolo' },
-  { label: 'Casos', href: '#casos' },
+  { label: 'Home', href: '/' },
+  { label: 'Soluções', href: '/#solucoes' },
+  { label: 'Protocolo', href: '/#protocolo' },
+  { label: 'Casos', href: '/#casos' },
   { label: 'Contato', href: '/contato' },
 ]
 
-export default function Navbar() {
+export default function NavbarInner() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -22,7 +22,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── Estilos do efeito fosco ── */}
       <style>{`
         .np-nav {
           position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
@@ -55,7 +54,7 @@ export default function Navbar() {
           maxWidth: 1120, margin: '0 auto', padding: '0 64px',
           height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>
-          <a href="#home" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+          <a href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
             <Image
               src="/logo-white.png" alt="Neo Power"
               width={96} height={68}
@@ -72,7 +71,7 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <a href="#contato" className="btn-primary hide-mobile" style={{ padding: '10px 20px', fontSize: 11, flexShrink: 0 }}>
+          <a href="/contato" className="btn-primary hide-mobile" style={{ padding: '10px 20px', fontSize: 11, flexShrink: 0 }}>
             Solicitar Auditoria
           </a>
 
@@ -94,7 +93,7 @@ export default function Navbar() {
         {links.map(l => (
           <a key={l.label} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
         ))}
-        <a href="#contato" onClick={() => setOpen(false)} className="btn-primary">Solicitar Auditoria</a>
+        <a href="/contato" onClick={() => setOpen(false)} className="btn-primary">Solicitar Auditoria</a>
       </div>
     </>
   )
