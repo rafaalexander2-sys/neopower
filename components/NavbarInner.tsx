@@ -61,7 +61,7 @@ export default function NavbarInner() {
           <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
             <img
               src={`${BASE}/logo-white.png`} alt="Neo Power"
-              style={{ height: 48, width: 'auto', objectFit: 'contain' }}
+              style={{ height: 96, width: 'auto', objectFit: 'contain' }}
             />
           </Link>
 
