@@ -32,7 +32,7 @@ export default function Footer() {
             <img
               src={`${BASE}/logo-white.png`} alt="Neo Power"
               width={110} height={78}
-              style={{ height: 36, width: 'auto', objectFit: 'contain', marginBottom: 18 }}
+              style={{ height: 56, width: 'auto', objectFit: 'contain', marginBottom: 18 }}
             />
             <p style={{ fontSize: 13, color: 'var(--text-lo)', lineHeight: 1.75, maxWidth: 270, marginBottom: 24 }}>
               Engenharia fotovoltaica de alta complexidade. Tolerância zero a falhas, protocolo proprietário de execução.

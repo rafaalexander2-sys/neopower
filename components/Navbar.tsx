@@ -60,7 +60,7 @@ export default function Navbar() {
             <img
               src={`${BASE}/logo-white.png`} alt="Neo Power"
               width={96} height={68}
-              style={{ height: 30, width: 'auto', objectFit: 'contain' }}
+              style={{ height: 48, width: 'auto', objectFit: 'contain' }}
             />
           </a>
 
