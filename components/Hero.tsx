@@ -85,13 +85,13 @@ export default function Hero() {
       {/* Conteúdo */}
       <div className="hero-content" style={{
         position: 'absolute',
-        top: 68, left: 0, right: 0, bottom: 90,
+        top: 88, left: 0, right: 0, bottom: 90,
         zIndex: 2,
         display: 'flex',
         alignItems: 'center',
         overflow: 'hidden',
       }}>
-        <div className="wrap">
+        <div style={{ width: "100%", maxWidth: 1280, margin: "0 auto", padding: "0 48px" }}>
 
           <p style={{
             display: 'flex', alignItems: 'center', gap: 10,
