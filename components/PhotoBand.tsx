@@ -1,32 +1,39 @@
-import FotoSlot from './FotoSlot'
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
-/**
- * COMO ADICIONAR FOTOS:
- * 1. Coloque os arquivos em /public/fotos/   ex: /public/fotos/banda-1.jpg
- * 2. Preencha o campo  src  abaixo com o caminho   ex: src: '/fotos/banda-1.jpg'
- * 3. Deixe src vazio ('') para manter o placeholder escuro.
- */
 const fotos = [
-  { src: '', caption: 'Infraestrutura elétrica — Quadro de proteção MT' },
-  { src: '', caption: 'Usina fotovoltaica — Vista aérea' },
-  { src: '', caption: 'Detalhe técnico — Fixação e impermeabilização' },
+  { src: `${BASE}/foto-obra-1.jpg`, caption: 'Infraestrutura elétrica — Quadro de proteção MT' },
+  { src: `${BASE}/foto-obra-2.jpg`, caption: 'Usina fotovoltaica — Vista aérea' },
+  { src: `${BASE}/foto-obra-3.jpg`, caption: 'Detalhe técnico — Fixação e impermeabilização' },
 ]
 
 export default function PhotoBand() {
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', borderTop: '1px solid var(--line)' }}>
+    <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', borderTop:'1px solid var(--line)' }}>
       {fotos.map((f, i) => (
-        <FotoSlot
-          key={i}
-          src={f.src || undefined}
-          caption={f.caption}
-          style={{
-            minHeight: 240,
-            borderRadius: 0,
-            border: 'none',
-            borderRight: i < fotos.length - 1 ? '1px solid var(--line)' : 'none',
-          }}
-        />
+        <div key={i} className="ph" style={{
+          minHeight: 260,
+          borderRadius: 0,
+          border: 'none',
+          borderRight: i < fotos.length - 1 ? '1px solid var(--line)' : 'none',
+        }}>
+          {/* Coloque a foto em /public/foto-obra-{i+1}.jpg */}
+          <img
+            src={f.src}
+            alt={f.caption}
+            style={{
+              position: 'absolute', inset: 0,
+              width: '100%', height: '100%',
+              objectFit: 'cover', display: 'block',
+            }}
+          />
+          <div style={{
+            position: 'absolute', bottom: 0, left: 0, right: 0,
+            background: 'linear-gradient(to top,rgba(4,7,14,0.88),transparent)',
+            padding: '20px 18px 14px', zIndex: 2,
+          }}>
+            <span style={{ fontSize:9, fontWeight:600, letterSpacing:'0.18em', textTransform:'uppercase', color:'var(--text-lo)' }}>{f.caption}</span>
+          </div>
+        </div>
       ))}
       <style>{`
         @media (max-width:600px){

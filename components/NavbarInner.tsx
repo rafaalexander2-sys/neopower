@@ -5,11 +5,11 @@ import Link from 'next/link'
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
 const links = [
-  { label: 'Home', href: '/' },
+  { label: 'Home',        href: '/' },
   { label: 'Quem Somos', href: '/quem-somos' },
-  { label: 'Serviços', href: '/servicos' },
-  { label: 'Projetos', href: '/projetos' },
-  { label: 'Contato', href: '/contato' },
+  { label: 'Serviços',   href: '/servicos' },
+  { label: 'Projetos',   href: '/projetos' },
+  { label: 'Contato',    href: '/contato' },
 ]
 
 export default function NavbarInner() {
@@ -44,27 +44,28 @@ export default function NavbarInner() {
           letter-spacing: 0.02em;
           text-decoration: none;
           transition: color .2s;
+          white-space: nowrap;
         }
         .np-nav-link:hover { color: #fff; }
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
           .np-nav > div { padding: 0 24px !important; }
         }
       `}</style>
 
       <nav className={`np-nav${scrolled ? ' scrolled' : ''}`}>
         <div style={{
-          maxWidth: 1120, margin: '0 auto', padding: '0 64px',
-          height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          maxWidth: 1280, margin: '0 auto', padding: '0 48px',
+          height: 68, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          gap: 24,
         }}>
           <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
             <img
               src={`${BASE}/logo-white.png`} alt="Neo Power"
-              width={96} height={68}
               style={{ height: 48, width: 'auto', objectFit: 'contain' }}
             />
           </Link>
 
-          <ul className="hide-mobile" style={{ listStyle: 'none', display: 'flex', gap: 36, alignItems: 'center', margin: '0 auto' }}>
+          <ul className="hide-mobile" style={{ listStyle: 'none', display: 'flex', gap: 28, alignItems: 'center', flex: 1, justifyContent: 'center' }}>
             {links.map(l => (
               <li key={l.label}>
                 <Link href={l.href} className="np-nav-link">{l.label}</Link>
@@ -72,7 +73,7 @@ export default function NavbarInner() {
             ))}
           </ul>
 
-          <Link href="/contato" className="btn-primary hide-mobile" style={{ padding: '10px 20px', fontSize: 11, flexShrink: 0 }}>
+          <Link href="/contato" className="btn-primary hide-mobile" style={{ padding: '10px 22px', fontSize: 11, flexShrink: 0 }}>
             Solicitar Auditoria
           </Link>
 
@@ -83,7 +84,7 @@ export default function NavbarInner() {
             aria-label="Menu"
           >
             {[0, 1, 2].map(i => (
-              <span key={i} style={{ display: 'block', width: 20, height: 1.5, background: 'rgba(255,255,255,0.7)', borderRadius: 99 }} />
+              <span key={i} style={{ display: 'block', width: 22, height: 1.5, background: 'rgba(255,255,255,0.7)', borderRadius: 99 }} />
             ))}
           </button>
         </div>

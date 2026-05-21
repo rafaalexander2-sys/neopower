@@ -18,7 +18,6 @@ export default function Footer() {
       background: 'var(--bg-surface)',
       borderTop: '1px solid var(--line)',
     }}>
-      {/* Top glow */}
       <div style={{
         height: 1,
         background: 'linear-gradient(90deg, transparent 0%, rgba(74,144,217,0.25) 50%, transparent 100%)',
@@ -27,7 +26,6 @@ export default function Footer() {
       <div style={{ maxWidth: 1180, margin: '0 auto', padding: '60px 48px 36px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: 56, marginBottom: 52 }}>
 
-          {/* Brand */}
           <div>
             <img
               src={`${BASE}/logo-white.png`} alt="Neo Power"
@@ -54,7 +52,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Menu */}
           <div>
             <p style={{
               fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
@@ -75,7 +72,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
             <p style={{
               fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
