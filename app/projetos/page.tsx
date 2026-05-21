@@ -43,7 +43,7 @@ export default function Projetos() {
       {/* Hero */}
       <section style={{
         background: 'var(--bg-surface)',
-        paddingTop: 140, paddingBottom: 80,
+        paddingTop: 160, paddingBottom: 80,
         borderBottom: '1px solid var(--line)',
         position: 'relative', overflow: 'hidden',
       }}>

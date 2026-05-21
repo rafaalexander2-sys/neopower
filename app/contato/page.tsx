@@ -18,7 +18,7 @@ export default function ContatoPage() {
       {/* Hero */}
       <section style={{
         background: 'var(--bg-surface)',
-        paddingTop: 140, paddingBottom: 60,
+        paddingTop: 160, paddingBottom: 60,
         borderBottom: '1px solid var(--line)',
         position: 'relative', overflow: 'hidden',
       }}>

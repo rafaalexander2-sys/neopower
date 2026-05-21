@@ -55,13 +55,13 @@ export default function Navbar() {
       <nav className={`np-nav${scrolled ? ' scrolled' : ''}`}>
         <div style={{
           maxWidth: 1280, margin: '0 auto', padding: '0 48px',
-          height: 68, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          height: 88, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           gap: 24,
         }}>
           <a href="#home" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
             <img
               src={`${BASE}/logo-white.png`} alt="Neo Power"
-              style={{ height: 96, width: 'auto', objectFit: 'contain' }}
+              style={{ height: 124, width: 'auto', objectFit: 'contain' }}
             />
           </a>
 
