@@ -3,12 +3,18 @@ import Link from 'next/link'
 import NavbarInner from '@/components/NavbarInner'
 import Footer from '@/components/Footer'
 import RevealObserver from '@/components/RevealObserver'
+import FotoSlot from '@/components/FotoSlot'
 
 export const metadata: Metadata = {
   title: 'Projetos | Neo Power Engenharia Fotovoltaica',
   description: 'Portfólio de projetos fotovoltaicos executados pela Neo Power. Sistemas de Média e Baixa Tensão com protocolo de engenharia de alta complexidade.',
 }
 
+/**
+ * COMO ADICIONAR FOTOS:
+ * 1. Coloque os arquivos em /public/fotos/   ex: /public/fotos/proj-usina.jpg
+ * 2. Preencha foto1Src / foto2Src com o caminho   ex: foto1Src: '/fotos/proj-usina.jpg'
+ */
 const projetos = [
   {
     tag: 'Projeto de Referência — Flagship',
@@ -17,20 +23,22 @@ const projetos = [
     tipo: 'Média Tensão · Demanda Contratada',
     dados: [
       { val: '93 kWp', label: 'Potência Instalada' },
-      { val: 'MT/DC', label: 'Infraestrutura' },
-      { val: '100%', label: 'Aprovação em Auditoria' },
-      { val: '0', label: 'Infiltrações' },
+      { val: 'MT/DC',  label: 'Infraestrutura' },
+      { val: '100%',   label: 'Aprovação em Auditoria' },
+      { val: '0',      label: 'Infiltrações' },
     ],
     desc: 'Nossa engenharia foi testada e validada nos cenários mais rigorosos do país. Este projeto foi executado sob o crivo do escritório de engenharia particular da cliente — e aprovado integralmente, sem ressalvas. Uma prova de que nosso protocolo entrega excelência onde a margem para erro é zero.',
-    foto1: 'Vista geral da usina de 93 kWp',
-    foto2: 'Detalhe — Infraestrutura de Média Tensão',
+    foto1Src:     '',
+    foto1Caption: 'Vista geral da usina de 93 kWp',
+    foto2Src:     '',
+    foto2Caption: 'Detalhe — Infraestrutura de Média Tensão',
   },
 ]
 
 const metricas = [
-  { val: '8+', label: 'Anos de Campo' },
+  { val: '8+',   label: 'Anos de Campo' },
   { val: '100+', label: 'Projetos Entregues' },
-  { val: '0', label: 'Infiltrações Registradas' },
+  { val: '0',    label: 'Infiltrações Registradas' },
   { val: '100%', label: 'Aprovações em Concessionária' },
 ]
 
@@ -81,14 +89,6 @@ export default function Projetos() {
             ))}
           </div>
         </div>
-
-        <style>{`
-          @media (max-width:700px){
-            .met-grid { grid-template-columns:1fr 1fr !important; }
-            .met-grid > div:nth-child(2n) { border-right:none !important; }
-            .met-grid > div { border-bottom:1px solid var(--line); }
-          }
-        `}</style>
       </section>
 
       {/* Projetos */}
@@ -138,16 +138,8 @@ export default function Projetos() {
 
               {/* Fotos */}
               <div className="reveal" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 16 }}>
-                <div className="ph" style={{ minHeight: 280 }}>
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(to top,rgba(4,7,14,0.82),transparent)', padding: '16px 18px', zIndex: 2 }}>
-                    <span style={{ fontSize: 9, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-lo)' }}>{p.foto1}</span>
-                  </div>
-                </div>
-                <div className="ph" style={{ minHeight: 280 }}>
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(to top,rgba(4,7,14,0.82),transparent)', padding: '16px 18px', zIndex: 2 }}>
-                    <span style={{ fontSize: 9, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-lo)' }}>{p.foto2}</span>
-                  </div>
-                </div>
+                <FotoSlot src={p.foto1Src || undefined} caption={p.foto1Caption} style={{ minHeight: 280 }} />
+                <FotoSlot src={p.foto2Src || undefined} caption={p.foto2Caption} style={{ minHeight: 280 }} />
               </div>
             </div>
           ))}

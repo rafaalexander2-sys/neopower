@@ -1,27 +1,32 @@
+import FotoSlot from './FotoSlot'
+
+/**
+ * COMO ADICIONAR FOTOS:
+ * 1. Coloque os arquivos em /public/fotos/   ex: /public/fotos/banda-1.jpg
+ * 2. Preencha o campo  src  abaixo com o caminho   ex: src: '/fotos/banda-1.jpg'
+ * 3. Deixe src vazio ('') para manter o placeholder escuro.
+ */
 const fotos = [
-  'Infraestrutura elétrica — Quadro de proteção MT',
-  'Usina fotovoltaica — Vista aérea',
-  'Detalhe técnico — Fixação e impermeabilização',
+  { src: '', caption: 'Infraestrutura elétrica — Quadro de proteção MT' },
+  { src: '', caption: 'Usina fotovoltaica — Vista aérea' },
+  { src: '', caption: 'Detalhe técnico — Fixação e impermeabilização' },
 ]
 
 export default function PhotoBand() {
   return (
-    <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', borderTop:'1px solid var(--line)' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', borderTop: '1px solid var(--line)' }}>
       {fotos.map((f, i) => (
-        <div key={i} className="ph" style={{
-          minHeight:240,
-          borderRadius:0,
-          border:'none',
-          borderRight: i < fotos.length - 1 ? '1px solid var(--line)' : 'none',
-        }}>
-          <div style={{
-            position:'absolute', bottom:0, left:0, right:0,
-            background:'linear-gradient(to top,rgba(4,7,14,0.88),transparent)',
-            padding:'20px 18px 14px', zIndex:2,
-          }}>
-            <span style={{ fontSize:9, fontWeight:600, letterSpacing:'0.18em', textTransform:'uppercase', color:'var(--text-lo)' }}>{f}</span>
-          </div>
-        </div>
+        <FotoSlot
+          key={i}
+          src={f.src || undefined}
+          caption={f.caption}
+          style={{
+            minHeight: 240,
+            borderRadius: 0,
+            border: 'none',
+            borderRight: i < fotos.length - 1 ? '1px solid var(--line)' : 'none',
+          }}
+        />
       ))}
       <style>{`
         @media (max-width:600px){
