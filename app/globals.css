@@ -75,34 +75,30 @@ body::after {
 /* ─── Buttons ────────────────────────────────────────────── */
 .btn-primary {
   display:inline-flex; align-items:center; justify-content:center;
-  background: var(--grad-blue);
+  background: var(--blue-500);
   color:#fff;
   font-family:var(--font); font-size:11.5px; font-weight:700;
   letter-spacing:0.1em; text-transform:uppercase;
   padding:13px 26px; text-decoration:none;
   border:none; cursor:pointer;
-  border-radius: var(--r-sm);
-  box-shadow: var(--shadow-btn);
-  transition:opacity .2s, transform .2s;
-  position:relative; overflow:hidden; white-space:nowrap;
+  border-radius: 0;
+  transition:background .2s, transform .2s;
+  white-space:nowrap;
 }
-.btn-primary::before { content:''; position:absolute; inset:0; background:rgba(255,255,255,.12); opacity:0; transition:opacity .2s; }
-.btn-primary:hover::before { opacity:1; }
-.btn-primary:hover { transform:translateY(-1px); }
+.btn-primary:hover { background:var(--blue-400); transform:translateY(-1px); }
 
 .btn-ghost {
   display:inline-flex; align-items:center; justify-content:center;
-  background:rgba(255,255,255,.05);
+  background:transparent;
   color:var(--text-hi);
   font-family:var(--font); font-size:11.5px; font-weight:600;
   letter-spacing:0.1em; text-transform:uppercase;
   padding:13px 26px; text-decoration:none;
-  border:1px solid var(--line); cursor:pointer;
-  border-radius:var(--r-sm);
-  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.18); cursor:pointer;
+  border-radius:0;
   transition:all .25s; white-space:nowrap;
 }
-.btn-ghost:hover { background:rgba(255,255,255,.09); border-color:var(--line-blue); transform:translateY(-1px); }
+.btn-ghost:hover { background:rgba(255,255,255,.06); border-color:rgba(255,255,255,0.35); transform:translateY(-1px); }
 
 /* ─── Section label ──────────────────────────────────────── */
 .sec-label {
@@ -127,14 +123,14 @@ body::after {
 
 /* ─── Form ───────────────────────────────────────────────── */
 .np-input {
-  width:100%; background:rgba(255,255,255,.04);
-  border:1px solid var(--line); color:var(--text-hi);
+  width:100%; background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,0.14); color:var(--text-hi);
   font-family:var(--font); font-size:13.5px; font-weight:400;
   padding:12px 15px; outline:none;
-  border-radius:var(--r-xs); transition:border-color .2s,background .2s;
+  border-radius:0; transition:border-color .2s,background .2s;
 }
-.np-input:focus { border-color:var(--blue-500); background:rgba(43,94,167,.06); }
-.np-input::placeholder { color:var(--text-lo); }
+.np-input:focus { border-color:var(--blue-400); background:rgba(43,94,167,.06); }
+.np-input::placeholder { color:rgba(255,255,255,0.22); }
 select.np-input option { background:#0C1221; }
 
 /* ─── Mobile overlay ─────────────────────────────────────── */

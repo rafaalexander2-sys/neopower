@@ -1,6 +1,8 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+
 function MetricCounter({
   num, suffix, label, index,
 }: { num: number; suffix: string; label: string; index: number }) {
@@ -60,20 +62,20 @@ export default function Hero() {
   return (
     <section id="home" style={{ position: 'relative', height: '100svh', minHeight: 600 }}>
 
-      {/* Vídeo */}
+      {/* Vídeo — coloque o arquivo em /public/hero-bg.mp4 */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0, overflow: 'hidden' }}>
-        <iframe
-          src="https://www.youtube.com/embed/FDFZO3nxbZk?autoplay=1&mute=1&loop=1&playlist=FDFZO3nxbZk&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0&playsinline=1"
+        <video
+          autoPlay muted loop playsInline
           style={{
             position: 'absolute', top: '50%', left: '50%',
             transform: 'translate(-50%,-50%)',
             width: '177.78vh', minWidth: '100%',
             height: '56.25vw', minHeight: '100%',
-            border: 'none', pointerEvents: 'none',
+            objectFit: 'cover', pointerEvents: 'none',
           }}
-          allow="autoplay; encrypted-media"
-          title="Neo Power background"
-        />
+        >
+          <source src={`${BASE}/hero-bg.mp4`} type="video/mp4" />
+        </video>
       </div>
 
       {/* Overlays */}
