@@ -1,2 +1,2 @@
-:HL["/neopower/_next/static/chunks/17o05-c.8eyte.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"projetos","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"gVNPqx3TiWphbQkhSXM9U"}
+:HL["/neopower/_next/static/chunks/0yy-ir153anf8.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"projetos","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"RNwlaJG4u_hDFBou4jfxu"}
