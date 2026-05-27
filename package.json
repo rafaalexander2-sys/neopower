@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "wp:kit": "node --env-file=.env.wp scripts/wp/setup-kit.mjs",
+    "wp:page": "node --env-file=.env.wp scripts/wp/push-page.mjs"
   },
   "dependencies": {
     "next": "16.2.4",
