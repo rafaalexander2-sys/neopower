@@ -1,0 +1,41 @@
+name: WordPress Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'O que executar'
+        required: true
+        default: 'kit'
+        type: choice
+        options:
+          - kit
+          - home
+          - quem-somos
+          - servicos
+          - projetos
+          - contato
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Criar .env.wp
+        run: |
+          echo "WP_URL=${{ secrets.WP_URL }}" >> .env.wp
+          echo "WP_USER=${{ secrets.WP_USER }}" >> .env.wp
+          echo "WP_APP_PASSWORD=${{ secrets.WP_APP_PASSWORD }}" >> .env.wp
+
+      - name: Configurar Kit Global
+        if: ${{ inputs.action == 'kit' }}
+        run: node --env-file=.env.wp scripts/wp/setup-kit.mjs
+
+      - name: Publicar página
+        if: ${{ inputs.action != 'kit' }}
+        run: node --env-file=.env.wp scripts/wp/pages/${{ inputs.action }}.mjs
