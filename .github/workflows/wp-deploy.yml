@@ -9,6 +9,7 @@ on:
         default: 'kit'
         type: choice
         options:
+          - ping
           - kit
           - home
           - quem-somos
@@ -32,10 +33,16 @@ jobs:
           echo "WP_USER=${{ secrets.WP_USER }}" >> .env.wp
           echo "WP_APP_PASSWORD=${{ secrets.WP_APP_PASSWORD }}" >> .env.wp
 
+      - name: Ping WordPress REST API
+        if: ${{ inputs.action == 'ping' }}
+        run: |
+          echo "Testando conectividade com ${{ secrets.WP_URL }}"
+          curl -v --max-time 10 "${{ secrets.WP_URL }}/wp-json/" 2>&1 | head -60
+
       - name: Configurar Kit Global
         if: ${{ inputs.action == 'kit' }}
         run: node --env-file=.env.wp scripts/wp/setup-kit.mjs
 
       - name: Publicar página
-        if: ${{ inputs.action != 'kit' }}
+        if: ${{ inputs.action != 'kit' && inputs.action != 'ping' }}
         run: node --env-file=.env.wp scripts/wp/pages/${{ inputs.action }}.mjs
