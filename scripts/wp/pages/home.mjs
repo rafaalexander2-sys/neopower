@@ -1,4 +1,5 @@
 import { wpFetch } from '../client.mjs'
+import { NAVBAR } from '../shared.mjs'
 import { randomBytes } from 'crypto'
 
 const uid = () => randomBytes(4).toString('hex')
@@ -340,7 +341,7 @@ const FOOTER = `
   <div class="np-footer-body">
     <div class="np-footer-grid">
       <div>
-        <img src="/wp-content/uploads/logo-white.png" alt="Neo Power" style="height:146px;width:auto;object-fit:contain;margin-bottom:18px">
+        <img src="/wp-content/uploads/logo-white.png" alt="Neo Power" style="height:146px;width:auto;object-fit:contain;margin-bottom:18px;display:block" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;color:#fff;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;display:block">NEO POWER</span>
         <p style="font-size:13px;color:${C.textLo};line-height:1.75;max-width:270px;margin-bottom:24px">Engenharia fotovoltaica de alta complexidade. Tolerância zero a falhas, protocolo proprietário de execução.</p>
         <div class="np-social" style="display:flex;gap:16px">
           <a href="https://instagram.com/neopowerbr" target="_blank" rel="noopener">Instagram</a>
@@ -376,6 +377,7 @@ const FOOTER = `
 
 // ─── Assemble & push ─────────────────────────────────────────────────────────
 const pageData = [
+  htmlSec(NAVBAR),
   htmlSec(HERO),
   htmlSec(SOLUCOES),
   htmlSec(PHOTOBAND),
