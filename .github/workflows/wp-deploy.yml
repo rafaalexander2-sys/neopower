@@ -9,13 +9,16 @@ on:
         default: 'kit'
         type: choice
         options:
-          - ping
-          - kit
+          - all
           - home
           - quem-somos
           - servicos
           - projetos
           - contato
+          - politicas
+          - setup-front-page
+          - kit
+          - ping
 
 jobs:
   deploy:
@@ -43,6 +46,18 @@ jobs:
         if: ${{ inputs.action == 'kit' }}
         run: node --env-file=.env.wp scripts/wp/setup-kit.mjs
 
+      - name: Configurar página inicial
+        if: ${{ inputs.action == 'setup-front-page' }}
+        run: node --env-file=.env.wp scripts/wp/setup-front-page.mjs
+
+      - name: Publicar todas as páginas
+        if: ${{ inputs.action == 'all' }}
+        run: |
+          for page in home quem-somos servicos projetos contato politicas; do
+            echo "▶  Publicando $page..."
+            node --env-file=.env.wp scripts/wp/pages/$page.mjs
+          done
+
       - name: Publicar página
-        if: ${{ inputs.action != 'kit' && inputs.action != 'ping' }}
+        if: ${{ inputs.action != 'kit' && inputs.action != 'ping' && inputs.action != 'setup-front-page' && inputs.action != 'all' }}
         run: node --env-file=.env.wp scripts/wp/pages/${{ inputs.action }}.mjs

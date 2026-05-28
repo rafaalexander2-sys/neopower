@@ -1,95 +1,56 @@
 # Estado do projeto — handoff entre sessões
 
 Última atualização: 2026-05-28
-Branch ativa: `claude/admiring-turing-HZFNA` (1 commit à frente de `master`)
+Branch ativa: `claude/admiring-turing-HZFNA` (já contém merge da `master` + página Políticas)
 
 ---
 
 ## Site em produção
 
 - URL base: https://neopowerenergia.com.br
-- Página confirmada no ar: https://neopowerenergia.com.br/home/
+- Home aparece em `/home/` (e NÃO em `/`).
 
-### Problema observado pelo usuário
-No site público, **o menu da página `/home/` não está linkando para as outras páginas**. Não está claro se isso é porque:
-- (a) as outras páginas **não foram publicadas** no WordPress ainda (os scripts existem no repo mas talvez não tenham rodado), ou
-- (b) as páginas **existem no WP mas o menu/navegação não foi configurado** apontando para elas, ou
-- (c) os slugs publicados não batem com os links do menu (ex: `/home/` em vez de `/`, ou faltando trailing slash).
+### Diagnóstico CONFIRMADO dos problemas
 
-**Pendente verificar** em sessão futura, antes de mexer em qualquer coisa.
+| Sintoma | Causa-raiz | Correção |
+|---|---|---|
+| Menu vai para `/#projetos` (âncora) | A Home no ar ainda é a **versão antiga de página única** (menu rolava pra âncoras). O navbar novo (`shared.mjs`, links reais `/projetos`) **não foi publicado** | Rodar workflow `all` |
+| Site abre em `/home/` em vez de `/` | `setup-front-page.mjs` nunca rodou — Home não foi definida como front page | Rodar workflow `setup-front-page` |
+| Logo quebrado / menu hambúrguer mobile não abre | Permissão WordPress `unfiltered_html` ausente | Restaurar permissão no WP (não é config do Elementor) |
+
+### IMPORTANTE — mito a evitar
+- **NÃO existe** opção "Enable Unsafe HTML" no Elementor → Configurações → Avançado.
+- Permissão `unfiltered_html` é do WordPress, não do Elementor nem do Pro.
+- Os links do menu são `<a href>` normais — funcionam SEM `unfiltered_html`.
+
+---
+
+## Ordem recomendada para colocar no ar
+
+1. Rodar workflow **`all`** → republica 6 páginas com navbar novo. Corrige `/#projetos`.
+2. Rodar workflow **`setup-front-page`** → define Home como página inicial. Corrige `/home/`.
+3. (Opcional) Restaurar `unfiltered_html` no WordPress para logo + hambúrguer mobile.
 
 ---
 
 ## Inventário do repo
 
-### Páginas Next.js (`app/`) — 6, todas presentes
-- `/` (`app/page.tsx`)
-- `/quem-somos` (`app/quem-somos/page.tsx`)
-- `/projetos` (`app/projetos/page.tsx`)
-- `/servicos` (`app/servicos/page.tsx`)
-- `/contato` (`app/contato/page.tsx`)
-- `/politicas` (`app/politicas/page.tsx`)
-
-### Scripts de publicação WP/Elementor (`scripts/wp/pages/`) — 6, todos presentes
-- `home.mjs` · `quem-somos.mjs` · `projetos.mjs` · `servicos.mjs` · `contato.mjs` · `politicas.mjs`
-
-Cada script:
-- Gera um único `section` Elementor com um widget `html` contendo a página inteira (CSS + markup).
-- Publica via REST API do WP (`wpFetch` em `scripts/wp/client.mjs`) usando `.env.wp`.
-- Define `template: 'elementor_canvas'` e `hide_title: 'yes'`.
-- Atualiza se já existir página com mesmo slug; cria se não.
+### Scripts WP/Elementor (`scripts/wp/pages/`) — 6
+`home.mjs` · `quem-somos.mjs` · `servicos.mjs` · `projetos.mjs` · `contato.mjs` · `politicas.mjs`
+- Todas importam `NAVBAR` de `../shared.mjs`.
+- Footer com logo em URL absoluta + fallback onerror.
 
 ### Infra WP (`scripts/wp/`)
-- `client.mjs` — wrapper `wpFetch` para REST API.
-- `elementor.mjs` — helpers Elementor.
-- `setup-kit.mjs` — script `npm run wp:kit`.
-- `push-page.mjs` — script `npm run wp:page` (helper `pushPage`).
+- `client.mjs`, `shared.mjs` (NAVBAR + FOOTER_LOGO), `setup-kit.mjs`, `setup-front-page.mjs`, `push-page.mjs`, `elementor.mjs`.
 
-### Workflows GitHub Actions (`.github/workflows/`)
-- `deploy.yml`
-- `wp-deploy.yml` — deploy das páginas para o WordPress. **Verificar histórico de runs** para saber se as outras 5 páginas (além de `home`) chegaram a ser publicadas com sucesso.
+### Workflow (`wp-deploy.yml`) — opções
+`all` · `home` · `quem-somos` · `servicos` · `projetos` · `contato` · `politicas` · `setup-front-page` · `kit` · `ping`
 
 ---
 
-## Estado do git
+## Convenções
 
-- `master` (origin): até `36eb6ac` — "Add remaining page scripts: Quem Somos, Serviços, Projetos, Contato"
-- `claude/admiring-turing-HZFNA`: + 1 commit `68dd1e0` — "add WP/Elementor publish script for Políticas page"
-- Working tree: limpo (exceto este STATUS.md no momento da criação)
-
-### Histórico recente relevante
-```
-68dd1e0 add WP/Elementor publish script for Políticas page         (branch atual)
-36eb6ac Add remaining page scripts: Quem Somos, Serviços, Projetos, Contato
-d6c8e23 Fix: pass _elementor_page_settings as object not JSON string
-465b29b Add Home page builder script for Elementor
-4008d56 Improve WP API error reporting and add ping diagnostic step
-71cccd5 Add GitHub Action for WordPress deploy
-e65561f Add WordPress/Elementor API builder scripts
-```
-
----
-
-## Próximos passos sugeridos (não executar sem confirmação)
-
-1. **Diagnóstico do menu quebrado em https://neopowerenergia.com.br/home/**
-   - Conferir histórico de runs do `wp-deploy.yml` no GitHub Actions.
-   - Listar via WP REST API quais páginas existem publicadas (`GET /wp-json/wp/v2/pages?per_page=20`) e seus slugs.
-   - Comparar slugs publicados com os hrefs do menu no `home.mjs` / footer.
-2. Se as 5 páginas faltantes não tiverem sido publicadas: rodar `wp-deploy.yml` (ou os scripts locais com `.env.wp`).
-3. Se as páginas existirem mas o menu apontar errado: ajustar hrefs nos scripts (`/quem-somos` vs `/quem-somos/` etc.) e republicar.
-4. Configurar o menu nativo do WordPress (Aparência → Menus) caso o tema use o menu do WP em vez do menu hardcoded no HTML widget.
-5. Merge de `claude/admiring-turing-HZFNA` em `master` quando o `politicas.mjs` estiver validado.
-
----
-
-## Convenções importantes
-
-- `AGENTS.md` avisa: **esta versão do Next.js tem breaking changes**. Sempre consultar `node_modules/next/dist/docs/` antes de escrever código novo de Next.
-- Paleta padrão (objeto `C` nos scripts WP):
-  - `bgBase #04070E`, `bgSurface #070C18`
-  - `blue700 #1B3F6F`, `blue500 #2B5EA7`, `blue400 #4A90D9`
-  - `textHi #EEF0F6`, `textMid #7D869E`, `textLo #3E4459`
-  - `line rgba(255,255,255,0.065)`
-- Fonte: Plus Jakarta Sans (Google Fonts), pesos 400–800.
-- Footer e CSS base são duplicados em cada script WP — qualquer mudança global precisa ser replicada nos 6 arquivos.
+- Paleta: `bgBase #04070E`, `bgSurface #070C18`, `blue500 #2B5EA7`, `blue400 #4A90D9`, `textHi #EEF0F6`, `textMid #7D869E`, `textLo #3E4459`.
+- Fonte: Plus Jakarta Sans (400–800).
+- Logo: `https://neopowerenergia.com.br/wp-content/uploads/2026/04/neo-power-cores-finalbrancookokk-Renan-Alves-1.png`
+- Navbar centralizado em `shared.mjs` — mudança global só precisa editar lá.
