@@ -20,6 +20,7 @@ on:
           - kit
           - ping
           - diagnose
+          - cleanup-header
 
 jobs:
   deploy:
@@ -55,6 +56,10 @@ jobs:
         if: ${{ inputs.action == 'diagnose' }}
         run: node --env-file=.env.wp scripts/wp/diagnose.mjs
 
+      - name: Remover Header antigo do Theme Builder
+        if: ${{ inputs.action == 'cleanup-header' }}
+        run: node --env-file=.env.wp scripts/wp/cleanup-old-header.mjs
+
       - name: Publicar todas as páginas
         if: ${{ inputs.action == 'all' }}
         run: |
@@ -64,5 +69,5 @@ jobs:
           done
 
       - name: Publicar página
-        if: ${{ inputs.action != 'kit' && inputs.action != 'ping' && inputs.action != 'setup-front-page' && inputs.action != 'all' && inputs.action != 'diagnose' }}
+        if: ${{ inputs.action != 'kit' && inputs.action != 'ping' && inputs.action != 'setup-front-page' && inputs.action != 'all' && inputs.action != 'diagnose' && inputs.action != 'cleanup-header' }}
         run: node --env-file=.env.wp scripts/wp/pages/${{ inputs.action }}.mjs
