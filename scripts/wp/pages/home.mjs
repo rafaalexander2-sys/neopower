@@ -41,7 +41,7 @@ const BASE_CSS = `
 // ─── 1. HERO (mobile-first) ──────────────────────────────────────────────────
 // VIDEO_URL: troque pelo URL do .mp4 na biblioteca de Mídia do WP quando subir.
 // Ex.: https://neopowerenergia.com.br/wp-content/uploads/2026/05/hero-bg.mp4
-const HERO_VIDEO_URL = 'https://neopowerenergia.com.br/wp-content/uploads/hero-bg.mp4'
+const HERO_VIDEO_URL = 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/Energia-Solar-Campanha-para-Anuncio-4k-drone.mp4'
 
 const HERO = `${BASE_CSS}
 <style>
