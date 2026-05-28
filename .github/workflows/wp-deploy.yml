@@ -16,6 +16,7 @@ on:
           - servicos
           - projetos
           - contato
+          - setup-front-page
 
 jobs:
   deploy:
@@ -43,6 +44,10 @@ jobs:
         if: ${{ inputs.action == 'kit' }}
         run: node --env-file=.env.wp scripts/wp/setup-kit.mjs
 
+      - name: Configurar página inicial
+        if: ${{ inputs.action == 'setup-front-page' }}
+        run: node --env-file=.env.wp scripts/wp/setup-front-page.mjs
+
       - name: Publicar página
-        if: ${{ inputs.action != 'kit' && inputs.action != 'ping' }}
+        if: ${{ inputs.action != 'kit' && inputs.action != 'ping' && inputs.action != 'setup-front-page' }}
         run: node --env-file=.env.wp scripts/wp/pages/${{ inputs.action }}.mjs
