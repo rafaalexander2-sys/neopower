@@ -399,7 +399,7 @@ async function run() {
       _elementor_template_type: 'wp-page',
       _elementor_version: '3.0.0',
       _elementor_data: JSON.stringify(pageData),
-      _elementor_page_settings: JSON.stringify({ hide_title: 'yes' }),
+      _elementor_page_settings: { hide_title: 'yes' },
     },
   }
 
