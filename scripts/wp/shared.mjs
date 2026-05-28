@@ -1,6 +1,23 @@
 // Shared HTML constants imported by all page scripts
 
-export const NAVBAR = `
+// Global reset + body styles + Elementor full-width override.
+// Injected once via NAVBAR so every page that imports NAVBAR gets it.
+export const RESET_CSS = `
+<style id="np-reset">
+html,body{margin:0;padding:0;background:#04070E;color:#EEF0F6;overflow-x:hidden;width:100%;max-width:100vw}
+body{font-family:'Plus Jakarta Sans',sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+*{box-sizing:border-box}
+img,video,iframe{max-width:100%;display:block}
+/* Mata o "boxed" do tema e bordas laterais que sobram em volta das seções */
+.elementor,.elementor-section,.elementor-container,.elementor-row,.elementor-column-wrap,.elementor-widget-wrap{max-width:none!important;width:100%!important;margin-left:0!important;margin-right:0!important}
+.elementor-section-wrap,.site,.site-content,.content-area,#main,#primary,.entry-content,article.page{margin:0!important;padding:0!important;background:#04070E!important;max-width:none!important;width:100%!important}
+.elementor-page .elementor-element-populated{padding:0!important}
+@media(max-width:600px){html,body{font-size:15px}}
+/* Touch-friendly por padrão */
+a,button{touch-action:manipulation}
+</style>`
+
+export const NAVBAR = `${RESET_CSS}
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 .np-nav{position:fixed;top:0;left:0;width:100%;z-index:9999;background:rgba(4,7,14,.72);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.06);transition:background .35s,box-shadow .35s;font-family:'Plus Jakarta Sans',sans-serif}
@@ -15,7 +32,7 @@ export const NAVBAR = `
 .np-nav-burger span{display:block;width:22px;height:1.5px;background:rgba(255,255,255,.7);border-radius:99px}
 .np-mob-menu{display:none;position:fixed;inset:0;z-index:9998;background:rgba(4,7,14,.97);flex-direction:column;align-items:center;justify-content:center;gap:28px}
 .np-mob-menu.open{display:flex}
-.np-mob-lnk{color:rgba(255,255,255,.7);font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:500;text-decoration:none;transition:color .2s}
+.np-mob-lnk{color:rgba(255,255,255,.7);font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:500;text-decoration:none;transition:color .2s;padding:12px 24px;min-height:44px;display:inline-flex;align-items:center}
 .np-mob-lnk:hover{color:#fff}
 .np-mob-x{position:absolute;top:22px;right:22px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.4);font-size:24px;line-height:1;font-family:sans-serif}
 @media(max-width:900px){.np-nav-links,.np-nav-cta{display:none!important}.np-nav-burger{display:flex}.np-nav-inner{padding:0 24px}}
