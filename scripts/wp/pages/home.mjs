@@ -38,42 +38,60 @@ const BASE_CSS = `
 @media (max-width:768px) { .np-wrap { padding:0 24px; } }
 </style>`
 
-// ─── 1. HERO ─────────────────────────────────────────────────────────────────
+// ─── 1. HERO (mobile-first) ──────────────────────────────────────────────────
+// VIDEO_URL: troque pelo URL do .mp4 na biblioteca de Mídia do WP quando subir.
+// Ex.: https://neopowerenergia.com.br/wp-content/uploads/2026/05/hero-bg.mp4
+const HERO_VIDEO_URL = 'https://neopowerenergia.com.br/wp-content/uploads/hero-bg.mp4'
+
 const HERO = `${BASE_CSS}
 <style>
-.np-hero { position:relative; min-height:100vh; display:flex; flex-direction:column; background:${C.bgBase}; overflow:hidden; }
-.np-hero video { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:177.78vh; min-width:100%; height:56.25vw; min-height:100%; object-fit:cover; z-index:0; pointer-events:none; }
-.np-ov1 { position:absolute; inset:0; z-index:1; background:linear-gradient(110deg,rgba(4,7,14,.92) 0%,rgba(4,7,14,.72) 50%,rgba(4,7,14,.32) 100%); pointer-events:none; }
-.np-ov2 { position:absolute; top:0; left:0; right:0; height:55%; z-index:1; background:linear-gradient(to bottom,rgba(4,7,14,.72),transparent); pointer-events:none; }
-.np-ov3 { position:absolute; bottom:0; left:0; right:0; height:45%; z-index:1; background:linear-gradient(to top,rgba(4,7,14,1),transparent); pointer-events:none; }
-.np-hero-body { position:relative; z-index:2; flex:1; display:flex; align-items:center; padding:120px 48px 0; }
-.np-hero-inner { max-width:1280px; margin:0 auto; width:100%; }
-.np-hero-tag { display:flex; align-items:center; gap:10px; font-size:10px; font-weight:700; letter-spacing:0.26em; text-transform:uppercase; color:rgba(74,144,217,.85); margin-bottom:18px; font-family:'Plus Jakarta Sans',sans-serif; }
-.np-hero-tag i { display:inline-block; width:18px; height:1.5px; background:linear-gradient(90deg,#1B3F6F,#4A90D9); border-radius:99px; flex-shrink:0; font-style:normal; }
-h1.np-h1 { margin:0 0 20px; max-width:560px; }
-.np-h1-sub { display:block; font-size:clamp(16px,1.9vw,26px); font-weight:500; color:rgba(255,255,255,.68); line-height:1.2; letter-spacing:.01em; text-transform:uppercase; margin-bottom:.15em; font-family:'Plus Jakarta Sans',sans-serif; }
-.np-h1-main { display:block; font-size:clamp(20px,2.5vw,34px); font-weight:800; color:#fff; line-height:1.1; letter-spacing:-.015em; text-transform:uppercase; font-family:'Plus Jakarta Sans',sans-serif; }
-.np-hero-p1 { font-size:14.5px; color:rgba(255,255,255,.58); max-width:420px; line-height:1.75; margin-bottom:10px; font-family:'Plus Jakarta Sans',sans-serif; }
-.np-hero-p2 { font-size:12.5px; color:rgba(255,255,255,.28); max-width:420px; line-height:1.85; margin-bottom:34px; font-family:'Plus Jakarta Sans',sans-serif; }
-.np-hero-btns { display:flex; gap:10px; flex-wrap:wrap; }
-.np-metrics { display:grid; grid-template-columns:repeat(4,1fr); background:rgba(4,7,14,.86); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border-top:1px solid rgba(255,255,255,.055); position:relative; z-index:3; }
-.np-metric { padding:16px 12px; text-align:center; border-right:1px solid rgba(255,255,255,.05); }
-.np-metric:last-child { border-right:none; }
-.np-metric-val { font-size:clamp(16px,1.8vw,22px); font-weight:800; color:#fff; line-height:1; letter-spacing:-.02em; font-family:'Plus Jakarta Sans',sans-serif; }
-.np-metric-lbl { font-size:8px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.28); margin-top:6px; line-height:1.5; font-family:'Plus Jakarta Sans',sans-serif; }
-@media (max-width:768px) {
-  .np-hero-body { padding:100px 24px 0; }
-  .np-hero-p2 { display:none; }
-  .np-hero-btns { flex-direction:column; max-width:320px; }
-  .np-hero-btns a { width:100%; justify-content:center; box-sizing:border-box; }
-  .np-metrics { grid-template-columns:1fr 1fr; }
-  .np-metric:nth-child(2) { border-right:none; }
-  .np-metric:nth-child(1),.np-metric:nth-child(2) { border-bottom:1px solid rgba(255,255,255,.05); }
+/* ── base = mobile ───────────────────────────────────────────────────────── */
+.np-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;background:${C.bgBase};overflow:hidden}
+.np-hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none}
+.np-ov1{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.85) 0%,rgba(4,7,14,.65) 40%,rgba(4,7,14,.55) 100%);pointer-events:none}
+.np-ov2{position:absolute;top:0;left:0;right:0;height:35%;z-index:1;background:linear-gradient(to bottom,rgba(4,7,14,.7),transparent);pointer-events:none}
+.np-ov3{position:absolute;bottom:0;left:0;right:0;height:50%;z-index:1;background:linear-gradient(to top,rgba(4,7,14,1) 0%,rgba(4,7,14,.7) 50%,transparent 100%);pointer-events:none}
+.np-hero-body{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:120px 22px 28px;width:100%;box-sizing:border-box}
+.np-hero-inner{max-width:1280px;margin:0 auto;width:100%}
+.np-hero-tag{display:flex;align-items:center;gap:10px;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(74,144,217,.85);margin-bottom:18px;font-family:'Plus Jakarta Sans',sans-serif;flex-wrap:wrap}
+.np-hero-tag i{display:inline-block;width:18px;height:1.5px;background:linear-gradient(90deg,#1B3F6F,#4A90D9);border-radius:99px;flex-shrink:0;font-style:normal}
+h1.np-h1{margin:0 0 18px;max-width:560px}
+.np-h1-sub{display:block;font-size:clamp(15px,4.4vw,26px);font-weight:500;color:rgba(255,255,255,.7);line-height:1.2;letter-spacing:.01em;text-transform:uppercase;margin-bottom:.18em;font-family:'Plus Jakarta Sans',sans-serif}
+.np-h1-main{display:block;font-size:clamp(26px,7.2vw,42px);font-weight:800;color:#fff;line-height:1.08;letter-spacing:-.015em;text-transform:uppercase;font-family:'Plus Jakarta Sans',sans-serif}
+.np-hero-p1{font-size:14px;color:rgba(255,255,255,.66);max-width:420px;line-height:1.7;margin:0 0 20px;font-family:'Plus Jakarta Sans',sans-serif}
+.np-hero-p2{display:none}
+.np-hero-btns{display:flex;flex-direction:column;gap:10px;max-width:320px}
+.np-hero-btns a{width:100%;justify-content:center;min-height:48px;box-sizing:border-box}
+.np-metrics{display:grid;grid-template-columns:1fr 1fr;background:rgba(4,7,14,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-top:1px solid rgba(255,255,255,.055);position:relative;z-index:3}
+.np-metric{padding:18px 10px;text-align:center;border-right:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.np-metric:nth-child(2n){border-right:none}
+.np-metric:nth-last-child(-n+2){border-bottom:none}
+.np-metric-val{font-size:18px;font-weight:800;color:#fff;line-height:1;letter-spacing:-.02em;font-family:'Plus Jakarta Sans',sans-serif}
+.np-metric-lbl{font-size:8.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:6px;line-height:1.5;font-family:'Plus Jakarta Sans',sans-serif}
+
+/* ── tablet ──────────────────────────────────────────────────────────────── */
+@media (min-width:640px){
+  .np-hero-body{padding:140px 32px 36px}
+  .np-hero-btns{flex-direction:row;flex-wrap:wrap;max-width:none}
+  .np-hero-btns a{width:auto}
+  .np-metrics{grid-template-columns:repeat(4,1fr)}
+  .np-metric{border-bottom:none}
+  .np-metric:last-child{border-right:none}
+  .np-metric-val{font-size:clamp(17px,1.8vw,22px)}
+  .np-hero-p2{display:block;font-size:13px;color:rgba(255,255,255,.5);max-width:480px;line-height:1.8;margin:0 0 30px;font-family:'Plus Jakarta Sans',sans-serif}
+  .np-hero-p1{margin-bottom:10px}
+}
+
+/* ── desktop ─────────────────────────────────────────────────────────────── */
+@media (min-width:1024px){
+  .np-hero-body{padding:160px 48px 48px}
+  .np-hero video{width:max(100vw,177.78vh);height:max(100vh,56.25vw);top:50%;left:50%;transform:translate(-50%,-50%);inset:auto}
+  .np-ov1{background:linear-gradient(110deg,rgba(4,7,14,.92) 0%,rgba(4,7,14,.72) 50%,rgba(4,7,14,.32) 100%)}
 }
 </style>
 <div class="np-hero">
-  <video autoplay muted loop playsinline>
-    <source src="/wp-content/uploads/hero-bg.mp4" type="video/mp4">
+  <video autoplay muted loop playsinline preload="metadata" poster="${HERO_VIDEO_URL.replace(/\.mp4$/, '.jpg')}">
+    <source src="${HERO_VIDEO_URL}" type="video/mp4">
   </video>
   <div class="np-ov1"></div><div class="np-ov2"></div><div class="np-ov3"></div>
   <div class="np-hero-body">
@@ -86,8 +104,8 @@ h1.np-h1 { margin:0 0 20px; max-width:560px; }
       <p class="np-hero-p1">O rigor da engenharia industrial aplicado à proteção de patrimônios de luxo.</p>
       <p class="np-hero-p2">Projetos de Média e Baixa Tensão com supervisão técnica e assinatura de diretoria. Não somos distribuidores de equipamentos. Projetamos, executamos e auditamos sistemas sob nosso Protocolo Proprietário, onde a margem de erro é zero e a estética da sua propriedade é intocável.</p>
       <div class="np-hero-btns">
-        <a href="#contato" class="np-btn-p">Solicitar Auditoria Técnica</a>
-        <a href="#solucoes" class="np-btn-g">Ver Soluções</a>
+        <a href="/contato" class="np-btn-p">Solicitar Auditoria Técnica</a>
+        <a href="/servicos" class="np-btn-g">Ver Soluções</a>
       </div>
     </div>
   </div>
