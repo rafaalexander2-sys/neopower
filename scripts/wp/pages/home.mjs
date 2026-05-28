@@ -43,9 +43,9 @@ const HERO = `${BASE_CSS}
 <style>
 .np-hero { position:relative; min-height:100vh; display:flex; flex-direction:column; background:${C.bgBase}; overflow:hidden; }
 .np-hero video { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:177.78vh; min-width:100%; height:56.25vw; min-height:100%; object-fit:cover; z-index:0; pointer-events:none; }
-.np-ov1 { position:absolute; inset:0; z-index:1; background:linear-gradient(110deg,rgba(4,7,14,.92) 0%,rgba(4,7,14,.72) 50%,rgba(4,7,14,.32) 100%); }
-.np-ov2 { position:absolute; top:0; left:0; right:0; height:55%; z-index:1; background:linear-gradient(to bottom,rgba(4,7,14,.72),transparent); }
-.np-ov3 { position:absolute; bottom:0; left:0; right:0; height:45%; z-index:1; background:linear-gradient(to top,rgba(4,7,14,1),transparent); }
+.np-ov1 { position:absolute; inset:0; z-index:1; background:linear-gradient(110deg,rgba(4,7,14,.92) 0%,rgba(4,7,14,.72) 50%,rgba(4,7,14,.32) 100%); pointer-events:none; }
+.np-ov2 { position:absolute; top:0; left:0; right:0; height:55%; z-index:1; background:linear-gradient(to bottom,rgba(4,7,14,.72),transparent); pointer-events:none; }
+.np-ov3 { position:absolute; bottom:0; left:0; right:0; height:45%; z-index:1; background:linear-gradient(to top,rgba(4,7,14,1),transparent); pointer-events:none; }
 .np-hero-body { position:relative; z-index:2; flex:1; display:flex; align-items:center; padding:120px 48px 0; }
 .np-hero-inner { max-width:1280px; margin:0 auto; width:100%; }
 .np-hero-tag { display:flex; align-items:center; gap:10px; font-size:10px; font-weight:700; letter-spacing:0.26em; text-transform:uppercase; color:rgba(74,144,217,.85); margin-bottom:18px; font-family:'Plus Jakarta Sans',sans-serif; }
@@ -341,7 +341,7 @@ const FOOTER = `
   <div class="np-footer-body">
     <div class="np-footer-grid">
       <div>
-        <img src="/wp-content/uploads/2026/04/neo-power-cores-finalbrancookokk-Renan-Alves-1.png" alt="Neo Power" style="height:146px;width:auto;object-fit:contain;margin-bottom:18px;display:block" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;color:#fff;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;display:block">NEO POWER</span>
+        <img src="/wp-content/uploads/2026/04/neo-power-cores-finalbrancookokk-Renan-Alves-1.png" alt="Neo Power" style="height:146px;width:auto;object-fit:contain;margin-bottom:18px;display:block" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;color:#fff;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px">NEO POWER</span>
         <p style="font-size:13px;color:${C.textLo};line-height:1.75;max-width:270px;margin-bottom:24px">Engenharia fotovoltaica de alta complexidade. Tolerância zero a falhas, protocolo proprietário de execução.</p>
         <div class="np-social" style="display:flex;gap:16px">
           <a href="https://instagram.com/neopowerbr" target="_blank" rel="noopener">Instagram</a>
