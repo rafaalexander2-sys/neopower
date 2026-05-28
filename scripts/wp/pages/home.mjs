@@ -407,6 +407,12 @@ const pageData = [
 
 async function run() {
   console.log('🏠  Construindo página Home...\n')
+  console.log(`📺  HERO_VIDEO_URL: ${HERO_VIDEO_URL}`)
+  const payloadStr = JSON.stringify(pageData)
+  console.log(`🎬  Payload contém "Energia-Solar"?  ${payloadStr.includes('Energia-Solar') ? 'SIM ✓' : 'NÃO ✗  (CÓDIGO VELHO!)'}`)
+  console.log(`🧱  Payload contém "100svh"?         ${payloadStr.includes('100svh') ? 'SIM ✓' : 'NÃO ✗  (CÓDIGO VELHO!)'}`)
+  console.log(`🎨  Payload contém "np-reset"?       ${payloadStr.includes('np-reset') ? 'SIM ✓' : 'NÃO ✗  (CÓDIGO VELHO!)'}`)
+  console.log(`📦  Tamanho do payload: ${payloadStr.length} chars\n`)
 
   const existing = await wpFetch('pages?slug=home&per_page=1')
   const payload = {
