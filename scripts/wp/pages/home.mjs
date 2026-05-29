@@ -77,7 +77,7 @@ const HERO = `${BASE_CSS}
    WordPress não consegue extrair a tag e o Elementor/tema não interferem.
    A .np-hero ocupa 100% da seção full-width (htmlSec). */
 .np-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;background:${C.bgBase};overflow:hidden;width:100%}
-.np-hero #np-hero-vid{position:absolute!important;top:0!important;left:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center center!important;z-index:0!important;pointer-events:none!important;display:block!important;margin:0!important;border:0!important}
+.np-hero #np-hero-vid{position:absolute!important;top:0!important;z-index:0!important;pointer-events:none!important;display:block!important;margin:0!important;border:0!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center center!important}
 .np-ov1{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.72) 0%,rgba(4,7,14,.45) 40%,rgba(4,7,14,.35) 100%);pointer-events:none}
 .np-ov2{position:absolute;top:0;left:0;right:0;height:30%;z-index:1;background:linear-gradient(to bottom,rgba(4,7,14,.55),transparent);pointer-events:none}
 .np-ov3{position:absolute;bottom:0;left:0;right:0;height:55%;z-index:1;background:linear-gradient(to top,rgba(4,7,14,1) 0%,rgba(4,7,14,.85) 30%,transparent 100%);pointer-events:none}
@@ -144,6 +144,13 @@ h1.np-h1{margin:0 0 18px;max-width:560px}
 </div>
 <script>
 (function(){
+  function reposition(h,v){
+    var vw=document.documentElement.clientWidth||window.innerWidth;
+    var r=h.getBoundingClientRect();
+    v.style.left=(-r.left)+'px';
+    v.style.width=vw+'px';
+    v.style.height=h.offsetHeight+'px';
+  }
   function inject(){
     var h=document.getElementById('np-hero');
     if(!h||document.getElementById('np-hero-vid'))return;
@@ -155,7 +162,13 @@ h1.np-h1{margin:0 0 18px;max-width:560px}
     s.src='${HERO_VIDEO_URL}';s.type='video/mp4';
     v.appendChild(s);
     h.insertBefore(v,h.firstChild);
+    reposition(h,v);
     var p=v.play();if(p&&p.catch)p.catch(function(){});
+    var ro=window.ResizeObserver?new ResizeObserver(function(){reposition(h,v)}):null;
+    if(ro)ro.observe(h);
+    window.addEventListener('resize',function(){reposition(h,v)},{passive:true});
+    window.addEventListener('orientationchange',function(){reposition(h,v)},{passive:true});
+    v.addEventListener('loadedmetadata',function(){reposition(h,v)});
   }
   if(document.readyState!=='loading')inject();else document.addEventListener('DOMContentLoaded',inject);
 })();
