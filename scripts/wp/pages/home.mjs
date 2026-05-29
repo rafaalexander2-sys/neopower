@@ -76,18 +76,14 @@ const HERO_POSTER_URL = '' // ← opcional. Se vazio, usa gradient profissional.
 const HERO = `${BASE_CSS}
 <style>
 /* ── base = mobile ───────────────────────────────────────────────────────── */
-/* Vídeo via background-video NATIVO da seção #np-hero-section (heroSec).
-   Esta versão exige stretch_section + config admin do Elementor. */
-.np-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;background:transparent;overflow:hidden;width:100%}
-
-/* Força bg-video container e <video> dentro a cobrirem 100% da seção. */
-#np-hero-section{position:relative!important;overflow:hidden!important}
-#np-hero-section .elementor-background-video-container,
-.elementor-background-video-container{position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;overflow:hidden!important;z-index:0!important;pointer-events:none!important;transform:none!important}
-#np-hero-section .elementor-background-video-hosted,
-#np-hero-section video,
-.elementor-background-video-hosted{position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center center!important;z-index:0!important;pointer-events:none!important;display:block!important;transform:none!important}
-.np-ov1{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.72) 0%,rgba(4,7,14,.45) 40%,rgba(4,7,14,.35) 100%);pointer-events:none}
+/* Vídeo é injetado por JS dentro de #np-hero (no script da navbar em
+   shared.mjs, que provadamente roda). Fundo de fallback = gradient profissional. */
+.np-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;width:100%;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 30%,rgba(43,94,167,.25),transparent 70%),
+    radial-gradient(ellipse 60% 50% at 20% 80%,rgba(27,63,111,.30),transparent 70%),
+    linear-gradient(135deg,#0A1428 0%,#04070E 60%,#070C18 100%)}
+.np-ov1{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.55) 0%,rgba(4,7,14,.25) 40%,rgba(4,7,14,.35) 100%);pointer-events:none}
 .np-ov2{position:absolute;top:0;left:0;right:0;height:30%;z-index:1;background:linear-gradient(to bottom,rgba(4,7,14,.55),transparent);pointer-events:none}
 .np-ov3{position:absolute;bottom:0;left:0;right:0;height:55%;z-index:1;background:linear-gradient(to top,rgba(4,7,14,1) 0%,rgba(4,7,14,.85) 30%,transparent 100%);pointer-events:none}
 .np-hero-body{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:120px 22px 28px;width:100%;box-sizing:border-box}
@@ -127,7 +123,7 @@ h1.np-h1{margin:0 0 18px;max-width:560px}
   .np-ov1{background:linear-gradient(110deg,rgba(4,7,14,.88) 0%,rgba(4,7,14,.55) 45%,rgba(4,7,14,.18) 100%)!important}
 }
 </style>
-<div class="np-hero">
+<div class="np-hero" id="np-hero" data-hero-video="${HERO_VIDEO_URL}">
   <div class="np-ov1"></div><div class="np-ov2"></div><div class="np-ov3"></div>
   <div class="np-hero-body">
     <div class="np-hero-inner">
@@ -431,7 +427,7 @@ const FOOTER = `
 // ─── Assemble & push ─────────────────────────────────────────────────────────
 const pageData = [
   htmlSec(NAVBAR),
-  heroSec(HERO, HERO_VIDEO_URL),
+  htmlSec(HERO),
   htmlSec(SOLUCOES),
   htmlSec(PHOTOBAND),
   htmlSec(PROTOCOLO),

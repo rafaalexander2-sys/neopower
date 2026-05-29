@@ -75,6 +75,39 @@ export const NAVBAR = `${RESET_CSS}
   function upd(){nav.classList.toggle('scrolled',window.scrollY>40)}
   window.addEventListener('scroll',upd,{passive:true});
   upd();
+
+  // ── Hero video injection (roda aqui porque este script já provou que executa)
+  function injectHero(){
+    var h=document.getElementById('np-hero');
+    if(!h||document.getElementById('np-hero-vid'))return false;
+    var url=h.getAttribute('data-hero-video');
+    if(!url)return false;
+    var v=document.createElement('video');
+    v.id='np-hero-vid';
+    v.muted=true;v.defaultMuted=true;v.autoplay=true;v.loop=true;v.playsInline=true;
+    v.setAttribute('muted','');v.setAttribute('autoplay','');v.setAttribute('loop','');v.setAttribute('playsinline','');v.setAttribute('preload','auto');
+    var s=document.createElement('source');s.src=url;s.type='video/mp4';v.appendChild(s);
+    h.insertBefore(v,h.firstChild);
+    function reposition(){
+      var vw=document.documentElement.clientWidth||window.innerWidth;
+      var r=h.getBoundingClientRect();
+      v.style.cssText='position:absolute;top:0;left:'+(-r.left)+'px;width:'+vw+'px;height:'+h.offsetHeight+'px;object-fit:cover;object-position:center;z-index:0;pointer-events:none;display:block;margin:0;border:0;max-width:none;max-height:none';
+    }
+    reposition();
+    var p=v.play();if(p&&p.catch)p.catch(function(){});
+    window.addEventListener('resize',reposition,{passive:true});
+    window.addEventListener('orientationchange',reposition,{passive:true});
+    v.addEventListener('loadedmetadata',reposition);
+    if(window.ResizeObserver)new ResizeObserver(reposition).observe(h);
+    return true;
+  }
+  // tenta agora, se não rolou (DOM ainda não tem #np-hero), tenta de novo no DOMContentLoaded e no load
+  if(!injectHero()){
+    document.addEventListener('DOMContentLoaded',injectHero);
+    window.addEventListener('load',injectHero);
+    // retry adicional pra casos onde o widget HTML carrega async
+    var tries=0,timer=setInterval(function(){if(injectHero()||++tries>20)clearInterval(timer);},250);
+  }
 })();
 </script>`
 
