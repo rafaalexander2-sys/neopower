@@ -28,7 +28,7 @@ const PAGE = `
 .np-glass{background:rgba(255,255,255,.03);border:1px solid ${C.line};backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:14px;box-shadow:0 4px 24px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.04);position:relative;overflow:hidden}
 .np-btn-p{display:inline-flex;align-items:center;justify-content:center;background:${C.blue500};color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:13px 26px;text-decoration:none;border-radius:0;border:none;cursor:pointer;transition:background .2s,transform .2s;white-space:nowrap;width:100%;margin-top:4px;box-sizing:border-box}
 .np-btn-p:hover{background:${C.blue400};transform:translateY(-1px)}
-.np-input{width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.14);color:${C.textHi};font-size:13.5px;padding:12px 15px;outline:none;border-radius:0;transition:border-color .2s,background .2s;box-sizing:border-box}
+.np-input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.28);color:${C.textHi};font-size:13.5px;padding:12px 15px;outline:none;border-radius:0!important;transition:border-color .2s,background .2s;box-sizing:border-box}
 .np-input:focus{border-color:${C.blue400};background:rgba(43,94,167,.06)}
 .np-input::placeholder{color:rgba(255,255,255,.22)}
 .np-f-lbl{display:block;font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:${C.textLo};margin-bottom:7px}

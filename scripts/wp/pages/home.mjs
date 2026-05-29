@@ -326,7 +326,7 @@ const CONTATO = `
 .np-ct-grid { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start; }
 .np-ct-info-item { padding-bottom:24px; margin-bottom:24px; border-bottom:1px solid ${C.line}; }
 .np-ct-info-lbl { font-size:9.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:${C.textLo}; margin-bottom:10px; }
-.np-input { width:100%; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.14); color:${C.textHi}; font-family:'Plus Jakarta Sans',sans-serif; font-size:13.5px; padding:12px 15px; outline:none; border-radius:0; transition:border-color .2s,background .2s; box-sizing:border-box; }
+.np-input { width:100%; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.28); color:${C.textHi}; font-family:'Plus Jakarta Sans',sans-serif; font-size:13.5px; padding:12px 15px; outline:none; border-radius:0!important; transition:border-color .2s,background .2s; box-sizing:border-box; }
 .np-input:focus { border-color:${C.blue400}; background:rgba(43,94,167,.06); }
 .np-input::placeholder { color:rgba(255,255,255,.22); }
 .np-f-lbl { display:block; font-size:9.5px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:${C.textLo}; margin-bottom:7px; }

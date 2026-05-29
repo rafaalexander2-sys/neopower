@@ -17,6 +17,16 @@ img,video,iframe{max-width:100%;display:block}
 @media(max-width:600px){html,body{font-size:15px}}
 /* Touch-friendly por padrão */
 a,button{touch-action:manipulation}
+
+/* ── BRUTALISMO INDUSTRIAL: quinas vivas em TUDO (vence theme defaults) ── */
+button,.button,input,textarea,select,
+.elementor-button,.elementor-field-group input,.elementor-field-group textarea,.elementor-field-group select,
+.np-btn-p,.np-btn-g,.np-nav-cta,.np-input,.np-glass,.np-photo-slot,.np-pb-slot,
+.np-sol-grid,.np-sol-card,.np-casos-main,.np-quote,.np-badge,.np-ph,.glass{border-radius:0!important}
+/* Mata gradients/sombras herdadas dos botões — azul chapado, sem brilho */
+.np-btn-p,.np-nav-cta{background-image:none!important;box-shadow:none!important;text-shadow:none!important}
+.np-btn-p:hover,.np-nav-cta:hover{background-image:none!important;box-shadow:none!important}
+.np-btn-g{background-image:none!important;box-shadow:none!important}
 </style>`
 
 export const NAVBAR = `${RESET_CSS}
@@ -28,7 +38,7 @@ export const NAVBAR = `${RESET_CSS}
 .np-nav-links{list-style:none;padding:0;margin:0;display:flex;gap:28px;align-items:center;flex:1;justify-content:center}
 .np-nav-link{color:rgba(255,255,255,.6);font-size:12px;font-weight:500;letter-spacing:.02em;text-decoration:none;transition:color .2s;white-space:nowrap;font-family:'Plus Jakarta Sans',sans-serif}
 .np-nav-link:hover,.np-nav-link.active{color:#fff}
-.np-nav-cta{display:inline-flex;align-items:center;justify-content:center;background:#2B5EA7;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;text-decoration:none;border-radius:0;cursor:pointer;flex-shrink:0;transition:background .2s;white-space:nowrap}
+.np-nav-cta{display:inline-flex;align-items:center;justify-content:center;background:#2B5EA7;background-image:none;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:10px 22px;text-decoration:none;border:none;border-radius:0;box-shadow:none;cursor:pointer;flex-shrink:0;transition:background .15s;white-space:nowrap}
 .np-nav-cta:hover{background:#4A90D9}
 .np-nav-burger{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;align-items:center}
 .np-nav-burger span{display:block;width:22px;height:1.5px;background:rgba(255,255,255,.7);border-radius:99px}
