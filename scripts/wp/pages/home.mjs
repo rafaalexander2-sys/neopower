@@ -73,22 +73,11 @@ const HERO_VIDEO_URL = 'https://neopowerenergia.com.br/wp-content/uploads/2026/0
 const HERO = `${BASE_CSS}
 <style>
 /* ── base = mobile ───────────────────────────────────────────────────────── */
-/* O vídeo é background NATIVO da seção #np-hero-section. O segredo: a SEÇÃO
-   precisa ser 100vw (não a .np-hero). Aí o bg-video preenche a seção inteira. */
-.np-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;background:transparent;overflow:hidden;width:100%}
-
-/* ── A SEÇÃO fura o wrapper do tema e vira 100vw. É aqui que o vídeo mora. ── */
-#np-hero-section{position:relative!important;width:100vw!important;max-width:100vw!important;margin-left:calc(50% - 50vw)!important;margin-right:calc(50% - 50vw)!important;left:0!important;right:0!important;overflow:hidden!important}
-/* container do bg-video preenche 100% da seção (que agora é 100vw) */
-#np-hero-section .elementor-background-video-container,
-.elementor-background-video-container{position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;overflow:hidden!important;z-index:0!important;pointer-events:none!important;transform:none!important}
-#np-hero-section .elementor-background-video-hosted,
-#np-hero-section video,
-.elementor-background-video-hosted{position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center center!important;z-index:0!important;pointer-events:none!important;display:block!important;transform:none!important}
-#np-hero-section .elementor-container,
-#np-hero-section .elementor-column,
-#np-hero-section .elementor-widget-wrap,
-#np-hero-section .elementor-widget-container{position:relative;z-index:2;width:100%!important;max-width:100%!important;padding:0!important;margin:0!important}
+/* O vídeo é injetado via JS dentro da .np-hero (id #np-hero), então o
+   WordPress não consegue extrair a tag e o Elementor/tema não interferem.
+   A .np-hero ocupa 100% da seção full-width (htmlSec). */
+.np-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;background:${C.bgBase};overflow:hidden;width:100%}
+.np-hero #np-hero-vid{position:absolute!important;top:0!important;left:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center center!important;z-index:0!important;pointer-events:none!important;display:block!important;margin:0!important;border:0!important}
 .np-ov1{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.72) 0%,rgba(4,7,14,.45) 40%,rgba(4,7,14,.35) 100%);pointer-events:none}
 .np-ov2{position:absolute;top:0;left:0;right:0;height:30%;z-index:1;background:linear-gradient(to bottom,rgba(4,7,14,.55),transparent);pointer-events:none}
 .np-ov3{position:absolute;bottom:0;left:0;right:0;height:55%;z-index:1;background:linear-gradient(to top,rgba(4,7,14,1) 0%,rgba(4,7,14,.85) 30%,transparent 100%);pointer-events:none}
@@ -129,7 +118,7 @@ h1.np-h1{margin:0 0 18px;max-width:560px}
   .np-ov1{background:linear-gradient(110deg,rgba(4,7,14,.88) 0%,rgba(4,7,14,.55) 45%,rgba(4,7,14,.18) 100%)!important}
 }
 </style>
-<div class="np-hero">
+<div class="np-hero" id="np-hero">
   <div class="np-ov1"></div><div class="np-ov2"></div><div class="np-ov3"></div>
   <div class="np-hero-body">
     <div class="np-hero-inner">
@@ -152,7 +141,25 @@ h1.np-h1{margin:0 0 18px;max-width:560px}
     <div class="np-metric"><div class="np-metric-val">93kWp</div><div class="np-metric-lbl">Maior Projeto Residencial</div></div>
     <div class="np-metric"><div class="np-metric-val">0</div><div class="np-metric-lbl">Tolerância a Falhas</div></div>
   </div>
-</div>`
+</div>
+<script>
+(function(){
+  function inject(){
+    var h=document.getElementById('np-hero');
+    if(!h||document.getElementById('np-hero-vid'))return;
+    var v=document.createElement('video');
+    v.id='np-hero-vid';
+    v.muted=true;v.defaultMuted=true;v.autoplay=true;v.loop=true;v.playsInline=true;
+    v.setAttribute('muted','');v.setAttribute('autoplay','');v.setAttribute('loop','');v.setAttribute('playsinline','');v.setAttribute('preload','auto');
+    var s=document.createElement('source');
+    s.src='${HERO_VIDEO_URL}';s.type='video/mp4';
+    v.appendChild(s);
+    h.insertBefore(v,h.firstChild);
+    var p=v.play();if(p&&p.catch)p.catch(function(){});
+  }
+  if(document.readyState!=='loading')inject();else document.addEventListener('DOMContentLoaded',inject);
+})();
+</script>`
 
 // ─── 2. SOLUÇÕES ─────────────────────────────────────────────────────────────
 const SOLUCOES = `
@@ -433,7 +440,7 @@ const FOOTER = `
 // ─── Assemble & push ─────────────────────────────────────────────────────────
 const pageData = [
   htmlSec(NAVBAR),
-  heroSec(HERO, HERO_VIDEO_URL),
+  htmlSec(HERO),
   htmlSec(SOLUCOES),
   htmlSec(PHOTOBAND),
   htmlSec(PROTOCOLO),
