@@ -19,10 +19,13 @@ const heroSec = (html, videoUrl) => ({
   elType: 'section',
   isInner: false,
   settings: {
+    _element_id: 'np-hero-section',
     content_width: 'full',
+    stretch_section: 'section-stretched',
     height: 'min-height',
     custom_height: { unit: 'vh', size: 100 },
     padding: { unit: 'px', top: '0', right: '0', bottom: '0', left: '0', isLinked: false },
+    margin: { unit: 'px', top: '0', right: '0', bottom: '0', left: '0', isLinked: false },
     background_background: 'video',
     background_video_link: videoUrl,
     background_play_on_mobile: 'yes',
@@ -74,8 +77,18 @@ const HERO = `${BASE_CSS}
    Elementor na seção pai. Aqui dentro a .np-hero é só camada de overlay+
    conteúdo. Fundo transparente pra o vídeo aparecer atrás. */
 .np-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;background:transparent;overflow:hidden;width:100%}
-/* Garante que o vídeo do Elementor cubra a seção inteira em qualquer breakpoint. */
-.elementor-background-video-container,.elementor-background-video-embed,.elementor-background-video-hosted{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
+
+/* ── Força bg-video do Elementor a cobrir 100% da seção (qualquer breakpoint) ── */
+#np-hero-section{position:relative!important;width:100vw!important;max-width:100vw!important;margin-left:calc(50% - 50vw)!important;margin-right:calc(50% - 50vw)!important;left:0!important;right:0!important;overflow:hidden!important}
+#np-hero-section .elementor-background-video-container,
+.elementor-background-video-container{position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;height:100%!important;overflow:hidden!important;z-index:0!important;pointer-events:none!important;transform:none!important}
+#np-hero-section .elementor-background-video-hosted,
+#np-hero-section video,
+.elementor-background-video-hosted{position:absolute!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;min-width:100%!important;min-height:100%!important;width:auto!important;height:auto!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center center!important;z-index:0!important;pointer-events:none!important;display:block!important}
+#np-hero-section .elementor-container,
+#np-hero-section .elementor-column,
+#np-hero-section .elementor-widget-wrap,
+#np-hero-section .elementor-widget-container{position:relative;z-index:2;width:100%!important;max-width:100%!important;padding:0!important;margin:0!important}
 .np-ov1{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.72) 0%,rgba(4,7,14,.45) 40%,rgba(4,7,14,.35) 100%);pointer-events:none}
 .np-ov2{position:absolute;top:0;left:0;right:0;height:30%;z-index:1;background:linear-gradient(to bottom,rgba(4,7,14,.55),transparent);pointer-events:none}
 .np-ov3{position:absolute;bottom:0;left:0;right:0;height:55%;z-index:1;background:linear-gradient(to top,rgba(4,7,14,1) 0%,rgba(4,7,14,.85) 30%,transparent 100%);pointer-events:none}
