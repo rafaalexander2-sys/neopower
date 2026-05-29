@@ -25,8 +25,11 @@ button,.button,input,textarea,select,
 .np-sol-grid,.np-sol-card,.np-casos-main,.np-quote,.np-badge,.np-ph,.glass{border-radius:0!important}
 /* Mata gradients/sombras herdadas dos botões — azul chapado, sem brilho */
 .np-btn-p,.np-nav-cta{background-image:none!important;box-shadow:none!important;text-shadow:none!important}
-.np-btn-p:hover,.np-nav-cta:hover{background-image:none!important;box-shadow:none!important}
+.np-btn-p:hover,.np-nav-cta:hover{background-image:none!important;box-shadow:none!important;transform:none!important}
 .np-btn-g{background-image:none!important;box-shadow:none!important}
+.np-btn-g:hover{transform:none!important}
+/* Zera appearance default do navegador nos inputs (sem inset shadow do tema) */
+button,input,textarea,select{-webkit-appearance:none!important;-moz-appearance:none!important;appearance:none!important}
 </style>`
 
 export const NAVBAR = `${RESET_CSS}
