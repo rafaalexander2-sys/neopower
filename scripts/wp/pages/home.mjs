@@ -83,9 +83,10 @@ const HERO = `${BASE_CSS}
     radial-gradient(ellipse 80% 60% at 70% 30%,rgba(43,94,167,.25),transparent 70%),
     radial-gradient(ellipse 60% 50% at 20% 80%,rgba(27,63,111,.30),transparent 70%),
     linear-gradient(135deg,#0A1428 0%,#04070E 60%,#070C18 100%)}
-.np-ov1{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.55) 0%,rgba(4,7,14,.25) 40%,rgba(4,7,14,.35) 100%);pointer-events:none}
-.np-ov2{position:absolute;top:0;left:0;right:0;height:30%;z-index:1;background:linear-gradient(to bottom,rgba(4,7,14,.55),transparent);pointer-events:none}
-.np-ov3{position:absolute;bottom:0;left:0;right:0;height:55%;z-index:1;background:linear-gradient(to top,rgba(4,7,14,1) 0%,rgba(4,7,14,.85) 30%,transparent 100%);pointer-events:none}
+/* ── mobile (base): overlay forte pra texto ficar legível ── */
+.np-ov1{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.82) 0%,rgba(4,7,14,.55) 35%,rgba(4,7,14,.65) 70%,rgba(4,7,14,.92) 100%);pointer-events:none}
+.np-ov2{position:absolute;top:0;left:0;right:0;height:40%;z-index:1;background:linear-gradient(to bottom,rgba(4,7,14,.7),transparent);pointer-events:none}
+.np-ov3{position:absolute;bottom:0;left:0;right:0;height:55%;z-index:1;background:linear-gradient(to top,rgba(4,7,14,1) 0%,rgba(4,7,14,.88) 30%,transparent 100%);pointer-events:none}
 .np-hero-body{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:120px 22px 28px;width:100%;box-sizing:border-box}
 .np-hero-inner{max-width:1280px;margin:0 auto;width:100%}
 .np-hero-tag{display:flex;align-items:center;gap:10px;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(74,144,217,.85);margin-bottom:18px;font-family:'Plus Jakarta Sans',sans-serif;flex-wrap:wrap}
