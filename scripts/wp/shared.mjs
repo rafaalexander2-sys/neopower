@@ -11,6 +11,8 @@ img,video,iframe{max-width:100%;display:block}
 /* Mata o "boxed" do tema e bordas laterais que sobram em volta das seções */
 .elementor,.elementor-section,.elementor-container,.elementor-row,.elementor-column-wrap,.elementor-widget-wrap{max-width:none!important;width:100%!important;margin-left:0!important;margin-right:0!important}
 .elementor-section-wrap,.site,.site-content,.content-area,#main,#primary,.entry-content,article.page{margin:0!important;padding:0!important;background:#04070E!important;max-width:none!important;width:100%!important}
+/* Libera overflow dos wrappers de conteúdo pra seções 100vw (full-bleed) não serem cortadas */
+.site,.site-content,.content-area,#main,#primary,#content,#page,.entry-content,.elementor,.elementor-section-wrap,article.page,.page-content{overflow:visible!important}
 .elementor-page .elementor-element-populated{padding:0!important}
 @media(max-width:600px){html,body{font-size:15px}}
 /* Touch-friendly por padrão */

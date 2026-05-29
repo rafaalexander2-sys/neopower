@@ -73,15 +73,15 @@ const HERO_VIDEO_URL = 'https://neopowerenergia.com.br/wp-content/uploads/2026/0
 const HERO = `${BASE_CSS}
 <style>
 /* ── base = mobile ───────────────────────────────────────────────────────── */
-/* IMPORTANTE: a tag <video> é injetada pelo background-video NATIVO do
-   Elementor na seção pai. Aqui dentro a .np-hero é só camada de overlay+
-   conteúdo. Fundo transparente pra o vídeo aparecer atrás. */
-.np-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;background:transparent;overflow:hidden;width:100vw;left:50%;margin-left:-50vw;margin-right:-50vw;right:50%}
+/* O vídeo é background NATIVO da seção #np-hero-section. O segredo: a SEÇÃO
+   precisa ser 100vw (não a .np-hero). Aí o bg-video preenche a seção inteira. */
+.np-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;background:transparent;overflow:hidden;width:100%}
 
-/* ── Força bg-video e conteúdo a serem 100vw, independente do wrapper do tema. ── */
-#np-hero-section{position:relative!important;overflow:hidden!important;width:100%!important}
+/* ── A SEÇÃO fura o wrapper do tema e vira 100vw. É aqui que o vídeo mora. ── */
+#np-hero-section{position:relative!important;width:100vw!important;max-width:100vw!important;margin-left:calc(50% - 50vw)!important;margin-right:calc(50% - 50vw)!important;left:0!important;right:0!important;overflow:hidden!important}
+/* container do bg-video preenche 100% da seção (que agora é 100vw) */
 #np-hero-section .elementor-background-video-container,
-.elementor-background-video-container{position:absolute!important;top:0!important;left:50%!important;transform:translateX(-50%)!important;width:100vw!important;height:100%!important;max-width:none!important;overflow:hidden!important;z-index:0!important;pointer-events:none!important}
+.elementor-background-video-container{position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;overflow:hidden!important;z-index:0!important;pointer-events:none!important;transform:none!important}
 #np-hero-section .elementor-background-video-hosted,
 #np-hero-section video,
 .elementor-background-video-hosted{position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center center!important;z-index:0!important;pointer-events:none!important;display:block!important;transform:none!important}
