@@ -66,19 +66,26 @@ const BASE_CSS = `
 </style>`
 
 // ─── 1. HERO (mobile-first) ──────────────────────────────────────────────────
-// VIDEO_URL: troque pelo URL do .mp4 na biblioteca de Mídia do WP quando subir.
-// Ex.: https://neopowerenergia.com.br/wp-content/uploads/2026/05/hero-bg.mp4
+// VÍDEO foi substituído por IMAGEM estática (a Hostinger constringe vídeos
+// no frontend independente da configuração — testamos 8 abordagens).
+// Pra trocar a imagem do Hero: suba um .jpg/.webp na Biblioteca de Mídia
+// do WP e cole a URL aqui.
 const HERO_VIDEO_URL = 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/Energia-Solar-Campanha-para-Anuncio-4k-drone.mp4'
+const HERO_POSTER_URL = '' // ← opcional. Se vazio, usa gradient profissional. Ex: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/hero-poster.jpg'
 
 const HERO = `${BASE_CSS}
 <style>
 /* ── base = mobile ───────────────────────────────────────────────────────── */
-/* O vídeo é injetado via JS dentro da .np-hero (id #np-hero), então o
-   WordPress não consegue extrair a tag e o Elementor/tema não interferem.
-   A .np-hero ocupa 100% da seção full-width (htmlSec). */
-.np-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;background:${C.bgBase};overflow:hidden;width:100%}
-.np-hero #np-hero-vid{position:absolute!important;top:0!important;z-index:0!important;pointer-events:none!important;display:block!important;margin:0!important;border:0!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center center!important}
-.np-ov1{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.72) 0%,rgba(4,7,14,.45) 40%,rgba(4,7,14,.35) 100%);pointer-events:none}
+/* Fundo: imagem estática (HERO_POSTER_URL) sobreposta a gradient
+   profissional como fallback se a URL estiver vazia. Sem JS, sem <video>,
+   sem dependência do Elementor — funciona em qualquer cenário. */
+.np-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;width:100%;
+  background:
+    ${HERO_POSTER_URL ? `url('${HERO_POSTER_URL}') center center / cover no-repeat,` : ''}
+    radial-gradient(ellipse 80% 60% at 70% 30%, rgba(43,94,167,0.28), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(27,63,111,0.32), transparent 70%),
+    linear-gradient(135deg, #0A1428 0%, #04070E 60%, #070C18 100%)}
+.np-ov1{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.55) 0%,rgba(4,7,14,.25) 40%,rgba(4,7,14,.35) 100%);pointer-events:none}
 .np-ov2{position:absolute;top:0;left:0;right:0;height:30%;z-index:1;background:linear-gradient(to bottom,rgba(4,7,14,.55),transparent);pointer-events:none}
 .np-ov3{position:absolute;bottom:0;left:0;right:0;height:55%;z-index:1;background:linear-gradient(to top,rgba(4,7,14,1) 0%,rgba(4,7,14,.85) 30%,transparent 100%);pointer-events:none}
 .np-hero-body{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:120px 22px 28px;width:100%;box-sizing:border-box}
@@ -141,38 +148,7 @@ h1.np-h1{margin:0 0 18px;max-width:560px}
     <div class="np-metric"><div class="np-metric-val">93kWp</div><div class="np-metric-lbl">Maior Projeto Residencial</div></div>
     <div class="np-metric"><div class="np-metric-val">0</div><div class="np-metric-lbl">Tolerância a Falhas</div></div>
   </div>
-</div>
-<script>
-(function(){
-  function reposition(h,v){
-    var vw=document.documentElement.clientWidth||window.innerWidth;
-    var r=h.getBoundingClientRect();
-    v.style.left=(-r.left)+'px';
-    v.style.width=vw+'px';
-    v.style.height=h.offsetHeight+'px';
-  }
-  function inject(){
-    var h=document.getElementById('np-hero');
-    if(!h||document.getElementById('np-hero-vid'))return;
-    var v=document.createElement('video');
-    v.id='np-hero-vid';
-    v.muted=true;v.defaultMuted=true;v.autoplay=true;v.loop=true;v.playsInline=true;
-    v.setAttribute('muted','');v.setAttribute('autoplay','');v.setAttribute('loop','');v.setAttribute('playsinline','');v.setAttribute('preload','auto');
-    var s=document.createElement('source');
-    s.src='${HERO_VIDEO_URL}';s.type='video/mp4';
-    v.appendChild(s);
-    h.insertBefore(v,h.firstChild);
-    reposition(h,v);
-    var p=v.play();if(p&&p.catch)p.catch(function(){});
-    var ro=window.ResizeObserver?new ResizeObserver(function(){reposition(h,v)}):null;
-    if(ro)ro.observe(h);
-    window.addEventListener('resize',function(){reposition(h,v)},{passive:true});
-    window.addEventListener('orientationchange',function(){reposition(h,v)},{passive:true});
-    v.addEventListener('loadedmetadata',function(){reposition(h,v)});
-  }
-  if(document.readyState!=='loading')inject();else document.addEventListener('DOMContentLoaded',inject);
-})();
-</script>`
+</div>`
 
 // ─── 2. SOLUÇÕES ─────────────────────────────────────────────────────────────
 const SOLUCOES = `
