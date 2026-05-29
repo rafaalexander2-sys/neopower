@@ -11,6 +11,30 @@ const htmlSec = (html) => sec(
   [col({ _column_size: 100, padding: { unit: 'px', top: '0', right: '0', bottom: '0', left: '0', isLinked: false } }, [w('html', { html })])]
 )
 
+// Seção com background-video nativo do Elementor — usado SÓ no Hero.
+// O Elementor renderiza o vídeo no nível da seção (não no widget HTML),
+// então o WordPress não tem como extrair a tag <video> pra um wrapper.
+const heroSec = (html, videoUrl) => ({
+  id: uid(),
+  elType: 'section',
+  isInner: false,
+  settings: {
+    content_width: 'full',
+    height: 'min-height',
+    custom_height: { unit: 'vh', size: 100 },
+    padding: { unit: 'px', top: '0', right: '0', bottom: '0', left: '0', isLinked: false },
+    background_background: 'video',
+    background_video_link: videoUrl,
+    background_play_on_mobile: 'yes',
+  },
+  elements: [
+    col(
+      { _column_size: 100, padding: { unit: 'px', top: '0', right: '0', bottom: '0', left: '0', isLinked: false } },
+      [w('html', { html })]
+    )
+  ]
+})
+
 const C = {
   bgBase: '#04070E', bgSurface: '#070C18',
   blue700: '#1B3F6F', blue500: '#2B5EA7', blue400: '#4A90D9',
@@ -46,8 +70,12 @@ const HERO_VIDEO_URL = 'https://neopowerenergia.com.br/wp-content/uploads/2026/0
 const HERO = `${BASE_CSS}
 <style>
 /* ── base = mobile ───────────────────────────────────────────────────────── */
-.np-hero{position:relative!important;min-height:100svh;display:flex;flex-direction:column;background:${C.bgBase};overflow:hidden;width:100%}
-.np-hero>video,.np-hero video{position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center center!important;z-index:0!important;pointer-events:none!important;display:block!important;margin:0!important;padding:0!important;border:0!important}
+/* IMPORTANTE: a tag <video> é injetada pelo background-video NATIVO do
+   Elementor na seção pai. Aqui dentro a .np-hero é só camada de overlay+
+   conteúdo. Fundo transparente pra o vídeo aparecer atrás. */
+.np-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;background:transparent;overflow:hidden;width:100%}
+/* Garante que o vídeo do Elementor cubra a seção inteira em qualquer breakpoint. */
+.elementor-background-video-container,.elementor-background-video-embed,.elementor-background-video-hosted{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
 .np-ov1{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.72) 0%,rgba(4,7,14,.45) 40%,rgba(4,7,14,.35) 100%);pointer-events:none}
 .np-ov2{position:absolute;top:0;left:0;right:0;height:30%;z-index:1;background:linear-gradient(to bottom,rgba(4,7,14,.55),transparent);pointer-events:none}
 .np-ov3{position:absolute;bottom:0;left:0;right:0;height:55%;z-index:1;background:linear-gradient(to top,rgba(4,7,14,1) 0%,rgba(4,7,14,.85) 30%,transparent 100%);pointer-events:none}
@@ -87,17 +115,8 @@ h1.np-h1{margin:0 0 18px;max-width:560px}
   .np-hero-body{padding:160px 48px 48px}
   .np-ov1{background:linear-gradient(110deg,rgba(4,7,14,.88) 0%,rgba(4,7,14,.55) 45%,rgba(4,7,14,.18) 100%)!important}
 }
-
-/* ── reforço anti-Elementor: o Elementor às vezes envolve <video> num wrapper.
-   Esses seletores cobrem qualquer wrapper que ele crie em volta. ───── */
-.np-hero .elementor-widget-container,.np-hero .elementor-element,.np-hero figure,
-.np-hero .wp-video,.np-hero .mejs-container,.np-hero .mejs-overlay,
-.np-hero .mejs-poster,.np-hero .mejs-mediaelement{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;background:transparent!important}
 </style>
 <div class="np-hero">
-  <video autoplay muted loop playsinline preload="metadata" poster="${HERO_VIDEO_URL.replace(/\.mp4$/, '.jpg')}">
-    <source src="${HERO_VIDEO_URL}" type="video/mp4">
-  </video>
   <div class="np-ov1"></div><div class="np-ov2"></div><div class="np-ov3"></div>
   <div class="np-hero-body">
     <div class="np-hero-inner">
@@ -401,7 +420,7 @@ const FOOTER = `
 // ─── Assemble & push ─────────────────────────────────────────────────────────
 const pageData = [
   htmlSec(NAVBAR),
-  htmlSec(HERO),
+  heroSec(HERO, HERO_VIDEO_URL),
   htmlSec(SOLUCOES),
   htmlSec(PHOTOBAND),
   htmlSec(PROTOCOLO),
