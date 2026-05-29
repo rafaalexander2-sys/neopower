@@ -46,11 +46,11 @@ const HERO_VIDEO_URL = 'https://neopowerenergia.com.br/wp-content/uploads/2026/0
 const HERO = `${BASE_CSS}
 <style>
 /* ── base = mobile ───────────────────────────────────────────────────────── */
-.np-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;background:${C.bgBase};overflow:hidden}
-.np-hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none}
-.np-ov1{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.85) 0%,rgba(4,7,14,.65) 40%,rgba(4,7,14,.55) 100%);pointer-events:none}
-.np-ov2{position:absolute;top:0;left:0;right:0;height:35%;z-index:1;background:linear-gradient(to bottom,rgba(4,7,14,.7),transparent);pointer-events:none}
-.np-ov3{position:absolute;bottom:0;left:0;right:0;height:50%;z-index:1;background:linear-gradient(to top,rgba(4,7,14,1) 0%,rgba(4,7,14,.7) 50%,transparent 100%);pointer-events:none}
+.np-hero{position:relative!important;min-height:100svh;display:flex;flex-direction:column;background:${C.bgBase};overflow:hidden;width:100%}
+.np-hero>video,.np-hero video{position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center center!important;z-index:0!important;pointer-events:none!important;display:block!important;margin:0!important;padding:0!important;border:0!important}
+.np-ov1{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.72) 0%,rgba(4,7,14,.45) 40%,rgba(4,7,14,.35) 100%);pointer-events:none}
+.np-ov2{position:absolute;top:0;left:0;right:0;height:30%;z-index:1;background:linear-gradient(to bottom,rgba(4,7,14,.55),transparent);pointer-events:none}
+.np-ov3{position:absolute;bottom:0;left:0;right:0;height:55%;z-index:1;background:linear-gradient(to top,rgba(4,7,14,1) 0%,rgba(4,7,14,.85) 30%,transparent 100%);pointer-events:none}
 .np-hero-body{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:120px 22px 28px;width:100%;box-sizing:border-box}
 .np-hero-inner{max-width:1280px;margin:0 auto;width:100%}
 .np-hero-tag{display:flex;align-items:center;gap:10px;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(74,144,217,.85);margin-bottom:18px;font-family:'Plus Jakarta Sans',sans-serif;flex-wrap:wrap}
@@ -85,9 +85,14 @@ h1.np-h1{margin:0 0 18px;max-width:560px}
 /* ── desktop ─────────────────────────────────────────────────────────────── */
 @media (min-width:1024px){
   .np-hero-body{padding:160px 48px 48px}
-  .np-hero video{width:max(100vw,177.78vh);height:max(100vh,56.25vw);top:50%;left:50%;transform:translate(-50%,-50%);inset:auto}
-  .np-ov1{background:linear-gradient(110deg,rgba(4,7,14,.92) 0%,rgba(4,7,14,.72) 50%,rgba(4,7,14,.32) 100%)}
+  .np-ov1{background:linear-gradient(110deg,rgba(4,7,14,.88) 0%,rgba(4,7,14,.55) 45%,rgba(4,7,14,.18) 100%)!important}
 }
+
+/* ── reforço anti-Elementor: o Elementor às vezes envolve <video> num wrapper.
+   Esses seletores cobrem qualquer wrapper que ele crie em volta. ───── */
+.np-hero .elementor-widget-container,.np-hero .elementor-element,.np-hero figure,
+.np-hero .wp-video,.np-hero .mejs-container,.np-hero .mejs-overlay,
+.np-hero .mejs-poster,.np-hero .mejs-mediaelement{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;background:transparent!important}
 </style>
 <div class="np-hero">
   <video autoplay muted loop playsinline preload="metadata" poster="${HERO_VIDEO_URL.replace(/\.mp4$/, '.jpg')}">
