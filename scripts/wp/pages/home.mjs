@@ -187,7 +187,7 @@ const SOLUCOES = `
 const PHOTOBAND = `
 <style>
 .np-photoband { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid ${C.line}; background:${C.bgBase}; font-family:'Plus Jakarta Sans',sans-serif; }
-.np-pb-slot { min-height:260px; background:linear-gradient(135deg,#0C1221,#080D1A); border-right:1px solid ${C.line}; position:relative; overflow:hidden; }
+.np-pb-slot { aspect-ratio:4/3; background:linear-gradient(135deg,#0C1221,#080D1A); border-right:1px solid ${C.line}; position:relative; overflow:hidden; }
 .np-pb-slot:last-child { border-right:none; }
 .np-pb-slot::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(27,63,111,.10),transparent 60%); }
 .np-pb-cap { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,rgba(4,7,14,.88),transparent); padding:20px 18px 14px; z-index:2; }
@@ -199,7 +199,7 @@ const PHOTOBAND = `
 </style>
 <div class="np-photoband">
   <div class="np-pb-slot">${photo(PHOTOS.homeBandMt,'Quadro de proteção MT')}<div class="np-pb-cap"><span>Infraestrutura elétrica — Quadro de proteção MT</span></div></div>
-  <div class="np-pb-slot">${photo(PHOTOS.homeBandAerea,'Usina fotovoltaica — Vista aérea')}<div class="np-pb-cap"><span>Usina fotovoltaica — Vista aérea</span></div></div>
+  <div class="np-pb-slot">${photo(PHOTOS.homeBandAerea,'Usina fotovoltaica — Vista aérea','center 70%')}<div class="np-pb-cap"><span>Usina fotovoltaica — Vista aérea</span></div></div>
   <div class="np-pb-slot">${photo(PHOTOS.homeBandFixacao,'Fixação e impermeabilização')}<div class="np-pb-cap"><span>Detalhe técnico — Fixação e impermeabilização</span></div></div>
 </div>`
 
@@ -240,7 +240,7 @@ const PROTOCOLO = `
       <p class="np-proto-p">Nossa metodologia, forjada a partir de mais de 8 anos de engenharia de campo, dita que a tolerância a falhas é zero. A inteligência do seu projeto nunca é terceirizada para montadores genéricos.</p>
       <p class="np-proto-p">Nossa equipe de elite garante que do estudo de viabilidade ao start-up do sistema, a integridade estrutural e estética da sua propriedade seja tratada com rigor máximo.</p>
       <p class="np-proto-p">Trabalhamos com propriedades onde o telhado vale mais que o sistema inteiro. A nossa engenharia protege a integridade estrutural, elimina riscos de infiltração e garante que a instalação fotovoltaica valoriza — nunca compromete — o patrimônio do cliente.</p>
-      <div class="np-photo-slot" style="min-height:280px;margin-top:36px">${photo(PHOTOS.homeEquipe,'Equipe técnica em campo')}<div class="np-slot-cap"><span>Fotografia — Equipe técnica em campo</span></div></div>
+      <div class="np-photo-slot" style="aspect-ratio:3/2;margin-top:36px">${photo(PHOTOS.homeEquipe,'Equipe técnica em campo')}<div class="np-slot-cap"><span>Fotografia — Equipe técnica em campo</span></div></div>
     </div>
     <div class="np-proto-right">
       <div class="np-glass np-badge">
@@ -282,7 +282,7 @@ const CASOS = `
 .np-quote::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,${C.blue700},transparent); }
 .np-quote-text { font-size:13.5px; font-style:italic; color:${C.textHi}; line-height:1.8; margin:0; }
 .np-quote-attr { margin-top:14px; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:${C.textLo}; }
-.np-strip { display:grid; grid-template-columns:2fr 1fr; gap:16px; }
+.np-strip { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
 @media (max-width:800px) {
   .np-casos-main { grid-template-columns:1fr !important; }
   .np-casos-data { border-left:none; border-top:1px solid ${C.line}; }
@@ -314,8 +314,8 @@ const CASOS = `
     <div class="np-quote-attr">— Protocolo de auditoria independente</div>
   </div>
   <div class="np-strip">
-    <div class="np-photo-slot" style="min-height:240px">${photo(PHOTOS.homeUsina93,'Vista geral da usina de 93 kWp')}<div class="np-slot-cap"><span>Fotografia autoral — Vista geral da usina de 93 kWp</span></div></div>
-    <div class="np-photo-slot" style="min-height:240px">${photo(PHOTOS.homeDetalheMt,'Detalhe de Média Tensão')}<div class="np-slot-cap"><span>Detalhe — Infraestrutura de Média Tensão</span></div></div>
+    <div class="np-photo-slot" style="aspect-ratio:4/3">${photo(PHOTOS.homeUsina93,'Vista geral da usina de 93 kWp','center 72%')}<div class="np-slot-cap"><span>Fotografia autoral — Vista geral da usina de 93 kWp</span></div></div>
+    <div class="np-photo-slot" style="aspect-ratio:4/3">${photo(PHOTOS.homeDetalheMt,'Detalhe de Média Tensão','center 65%')}<div class="np-slot-cap"><span>Detalhe — Infraestrutura de Média Tensão</span></div></div>
   </div>
 </div>
 </section>`

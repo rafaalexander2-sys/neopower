@@ -49,9 +49,12 @@ const PAGE = `${BASE}
 .np-pj-dc{padding:32px 24px;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;border-bottom:1px solid ${C.line};border-right:1px solid ${C.line}}
 .np-pj-dc:nth-child(even){border-right:none}
 .np-pj-dc:nth-child(n+3){border-bottom:none}
-.np-strip{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+.np-strip{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.np-ph{aspect-ratio:4/3}
 @media(max-width:700px){.np-met-grid{grid-template-columns:1fr 1fr!important}.np-met-cell:nth-child(2n){border-right:none!important}.np-met-cell{border-bottom:1px solid ${C.line}}}
+.np-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;margin-bottom:52px}
 @media(max-width:800px){.np-proj-card{grid-template-columns:1fr!important}.np-pj-data{border-left:none;border-top:1px solid ${C.line}}.np-strip{grid-template-columns:1fr!important}}
+@media(max-width:768px){.np-footer-grid{grid-template-columns:1fr!important;gap:40px!important}}
 </style>
 
 <section id="np-pj-hero">
@@ -95,8 +98,8 @@ const PAGE = `${BASE}
   </div>
 
   <div class="np-strip" style="margin-top:16px">
-    <div class="np-ph" style="min-height:280px">${photo(PHOTOS.projUsina93,'Vista geral da usina de 93 kWp')}<div class="np-cap" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(4,7,14,.82),transparent);padding:16px 18px;z-index:2"><span style="font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:${C.textLo}">Vista geral da usina de 93 kWp</span></div></div>
-    <div class="np-ph" style="min-height:280px">${photo(PHOTOS.projDetalheMt,'Detalhe de Média Tensão')}<div class="np-cap" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(4,7,14,.82),transparent);padding:16px 18px;z-index:2"><span style="font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:${C.textLo}">Detalhe — Infraestrutura de Média Tensão</span></div></div>
+    <div class="np-ph">${photo(PHOTOS.projUsina93,'Vista geral da usina de 93 kWp','center 72%')}<div class="np-cap" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(4,7,14,.82),transparent);padding:16px 18px;z-index:2"><span style="font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:${C.textLo}">Vista geral da usina de 93 kWp</span></div></div>
+    <div class="np-ph">${photo(PHOTOS.projDetalheMt,'Detalhe de Média Tensão','center 65%')}<div class="np-cap" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(4,7,14,.82),transparent);padding:16px 18px;z-index:2"><span style="font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:${C.textLo}">Detalhe — Infraestrutura de Média Tensão</span></div></div>
   </div>
 </div>
 </section>
@@ -131,7 +134,7 @@ const PAGE = `${BASE}
 <footer style="background:${C.bgSurface};border-top:1px solid ${C.line}">
   <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(74,144,217,.25),transparent)"></div>
   <div style="max-width:1180px;margin:0 auto;padding:60px 48px 36px">
-    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;margin-bottom:52px">
+    <div class="np-footer-grid">
       <div><img src="https://neopowerenergia.com.br/wp-content/uploads/2026/04/neo-power-cores-finalbrancookokk-Renan-Alves-1.png" alt="Neo Power" style="height:146px;width:auto;object-fit:contain;margin-bottom:18px;display:block" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;color:#fff;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px">NEO POWER</span><p style="font-size:13px;color:${C.textLo};line-height:1.75;max-width:270px">Engenharia fotovoltaica de alta complexidade. Tolerância zero a falhas.</p></div>
       <div><p style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:${C.textLo};margin-bottom:22px">Menu</p><div style="display:flex;flex-direction:column;gap:13px"><a href="/" style="font-size:13.5px;color:${C.textLo};text-decoration:none">Home</a><a href="/quem-somos" style="font-size:13.5px;color:${C.textLo};text-decoration:none">Quem Somos</a><a href="/projetos" style="font-size:13.5px;color:${C.textLo};text-decoration:none">Projetos</a><a href="/servicos" style="font-size:13.5px;color:${C.textLo};text-decoration:none">Serviços</a><a href="/contato" style="font-size:13.5px;color:${C.textLo};text-decoration:none">Contato</a></div></div>
       <div><p style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:${C.textLo};margin-bottom:22px">Contato</p><div style="font-size:13.5px;color:${C.textLo};line-height:2"><a href="tel:+5524981114255" style="color:${C.textLo};text-decoration:none">(24) 9 8111-4255</a><br><a href="mailto:neopowerbr@gmail.com" style="color:${C.textLo};text-decoration:none">neopowerbr@gmail.com</a><br>Est. União e Indústria, 9200<br>Loja D5 — Itaipava, Petrópolis · RJ</div></div>

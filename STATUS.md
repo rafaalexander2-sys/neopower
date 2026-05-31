@@ -74,7 +74,14 @@ legenda por cima; URL vazia mantém o gradiente.
 
 ---
 
-**Estado atual:** 8/9 slots preenchidos com fotos reais (Home + Projetos).
+**Responsividade das fotos (mobile-first):** os slots usam `aspect-ratio`
+(não mais `min-height` fixo), então a imagem mantém proporção e corta menos em
+qualquer tela. O helper `photo(url, alt, pos)` aceita `object-position` para
+ajustar o foco do corte (ex.: aéreos com painéis embaixo usam `center 70%`).
+Rodapés de Contato/Projetos/Políticas agora empilham no mobile (antes eram
+grid de 3 colunas inline sem breakpoint).
+
+**Estado atual:** 9/9 slots preenchidos com fotos reais (Home + Projetos + Renan).
 A foto `foreman-businessman-solar-energy-station` está no slot de Rigor Técnico
 da Home (`homeEquipe`). Falta só `quemSomosRenan` (retrato do Renan, sem foto ainda).
 
