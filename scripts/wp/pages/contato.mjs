@@ -1,5 +1,5 @@
 import { wpFetch } from '../client.mjs'
-import { NAVBAR, WA_BUTTON } from '../shared.mjs'
+import { NAVBAR, WA_BUTTON, heroBg } from '../shared.mjs'
 import { randomBytes } from 'crypto'
 
 const uid = () => randomBytes(4).toString('hex')
@@ -43,6 +43,7 @@ const PAGE = `
 </style>
 
 <section style="background:${C.bgSurface};padding:160px 0 60px;border-bottom:1px solid ${C.line};position:relative;overflow:hidden">
+  ${heroBg('contato')}
   <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(74,144,217,.3),transparent)"></div>
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(27,63,111,.12),transparent);pointer-events:none"></div>
   <div class="np-wrap" style="position:relative;z-index:1">

@@ -1,5 +1,5 @@
 import { wpFetch } from '../client.mjs'
-import { NAVBAR, PHOTOS, photo } from '../shared.mjs'
+import { NAVBAR, PHOTOS, photo, heroBg } from '../shared.mjs'
 import { randomBytes } from 'crypto'
 
 const uid = () => randomBytes(4).toString('hex')
@@ -58,6 +58,7 @@ const PAGE = `${BASE}
 </style>
 
 <section id="np-pj-hero">
+${heroBg('projetos')}
 <div class="np-wrap" style="position:relative;z-index:1">
   <div class="np-label">Portfólio</div>
   <h1 style="font-size:clamp(28px,4vw,52px);font-weight:800;color:${C.textHi};line-height:1.1;letter-spacing:-.025em;margin-bottom:20px;max-width:660px">Projetos Executados<br>sob Protocolo.</h1>

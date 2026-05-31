@@ -185,9 +185,18 @@ export const HERO_BG = {
     desk: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/ChatGPT-Image-May-31-2026-04_17_49-PM.png',
     mob:  'https://neopowerenergia.com.br/wp-content/uploads/2026/05/ChatGPT-Image-May-31-2026-04_17_01-PM.png',
   },
-  servicos: { desk: '', mob: '' },
-  projetos: { desk: '', mob: '' },
-  contato:  { desk: '', mob: '' },
+  servicos: {
+    desk: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/ChatGPT-Image-May-31-2026-04_25_02-PM.png',
+    mob:  'https://neopowerenergia.com.br/wp-content/uploads/2026/05/ChatGPT-Image-May-31-2026-04_19_49-PM.png',
+  },
+  projetos: {
+    desk: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/ChatGPT-Image-May-31-2026-04_29_47-PM.png',
+    mob:  'https://neopowerenergia.com.br/wp-content/uploads/2026/05/ChatGPT-Image-May-31-2026-04_27_14-PM.png',
+  },
+  contato:  {
+    desk: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/ChatGPT-Image-May-31-2026-04_32_55-PM.png',
+    mob:  'https://neopowerenergia.com.br/wp-content/uploads/2026/05/ChatGPT-Image-May-31-2026-04_32_37-PM.png',
+  },
   home:     { desk: '', mob: '' },
 }
 
