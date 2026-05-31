@@ -1,2 +1,2 @@
 :HL["/neopower/_next/static/chunks/0yy-ir153anf8.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"politicas","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"wcTob1r8JGLMBqx5vkDdV"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"politicas","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"Liz4AZ_RgBRW5rs57uKEs"}
