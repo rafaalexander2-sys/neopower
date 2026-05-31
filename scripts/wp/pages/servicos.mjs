@@ -1,5 +1,5 @@
 import { wpFetch } from '../client.mjs'
-import { NAVBAR } from '../shared.mjs'
+import { NAVBAR, heroBg } from '../shared.mjs'
 import { randomBytes } from 'crypto'
 
 const uid = () => randomBytes(4).toString('hex')
@@ -40,6 +40,7 @@ const HERO = `${BASE}
 #np-sv-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(27,63,111,.12),transparent);pointer-events:none}
 </style>
 <section id="np-sv-hero">
+${heroBg('servicos')}
 <div class="np-wrap" style="position:relative;z-index:1">
   <div class="np-label">Soluções Técnicas</div>
   <h1 style="font-size:clamp(28px,4vw,52px);font-weight:800;color:${C.textHi};line-height:1.1;letter-spacing:-.025em;margin-bottom:20px;max-width:660px">Engenharia Aplicada<br>a Cada Cenário.</h1>
