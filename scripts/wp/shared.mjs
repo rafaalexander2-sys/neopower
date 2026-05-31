@@ -33,6 +33,8 @@ button,input,textarea,select{-webkit-appearance:none!important;-moz-appearance:n
 /* ── FOTOS: imagem cobre o slot, legenda fica por cima ── */
 .np-photo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;border:0;margin:0;max-width:none;display:block}
 .np-slot-cap,.np-pb-cap{z-index:2}
+/* Quando há foto real no slot, esconde a legenda (placeholder mostra o rótulo) */
+.np-photo-img~.np-pb-cap,.np-photo-img~.np-slot-cap,.np-photo-img~.np-cap{display:none!important}
 </style>`
 
 export const NAVBAR = `${RESET_CSS}
