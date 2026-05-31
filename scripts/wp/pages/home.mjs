@@ -1,5 +1,5 @@
 import { wpFetch } from '../client.mjs'
-import { NAVBAR } from '../shared.mjs'
+import { NAVBAR, PHOTOS, photo } from '../shared.mjs'
 import { randomBytes } from 'crypto'
 
 const uid = () => randomBytes(4).toString('hex')
@@ -198,9 +198,9 @@ const PHOTOBAND = `
 }
 </style>
 <div class="np-photoband">
-  <div class="np-pb-slot"><div class="np-pb-cap"><span>Infraestrutura elétrica — Quadro de proteção MT</span></div></div>
-  <div class="np-pb-slot"><div class="np-pb-cap"><span>Usina fotovoltaica — Vista aérea</span></div></div>
-  <div class="np-pb-slot"><div class="np-pb-cap"><span>Detalhe técnico — Fixação e impermeabilização</span></div></div>
+  <div class="np-pb-slot">${photo(PHOTOS.homeBandMt,'Quadro de proteção MT')}<div class="np-pb-cap"><span>Infraestrutura elétrica — Quadro de proteção MT</span></div></div>
+  <div class="np-pb-slot">${photo(PHOTOS.homeBandAerea,'Usina fotovoltaica — Vista aérea')}<div class="np-pb-cap"><span>Usina fotovoltaica — Vista aérea</span></div></div>
+  <div class="np-pb-slot">${photo(PHOTOS.homeBandFixacao,'Fixação e impermeabilização')}<div class="np-pb-cap"><span>Detalhe técnico — Fixação e impermeabilização</span></div></div>
 </div>`
 
 // ─── 4. PROTOCOLO / SOBRE ────────────────────────────────────────────────────
@@ -240,7 +240,7 @@ const PROTOCOLO = `
       <p class="np-proto-p">Nossa metodologia, forjada a partir de mais de 8 anos de engenharia de campo, dita que a tolerância a falhas é zero. A inteligência do seu projeto nunca é terceirizada para montadores genéricos.</p>
       <p class="np-proto-p">Nossa equipe de elite garante que do estudo de viabilidade ao start-up do sistema, a integridade estrutural e estética da sua propriedade seja tratada com rigor máximo.</p>
       <p class="np-proto-p">Trabalhamos com propriedades onde o telhado vale mais que o sistema inteiro. A nossa engenharia protege a integridade estrutural, elimina riscos de infiltração e garante que a instalação fotovoltaica valoriza — nunca compromete — o patrimônio do cliente.</p>
-      <div class="np-photo-slot" style="min-height:280px;margin-top:36px"><div class="np-slot-cap"><span>Fotografia — Equipe técnica em campo</span></div></div>
+      <div class="np-photo-slot" style="min-height:280px;margin-top:36px">${photo(PHOTOS.homeEquipe,'Equipe técnica em campo')}<div class="np-slot-cap"><span>Fotografia — Equipe técnica em campo</span></div></div>
     </div>
     <div class="np-proto-right">
       <div class="np-glass np-badge">
@@ -314,8 +314,8 @@ const CASOS = `
     <div class="np-quote-attr">— Protocolo de auditoria independente</div>
   </div>
   <div class="np-strip">
-    <div class="np-photo-slot" style="min-height:240px"><div class="np-slot-cap"><span>Fotografia autoral — Vista geral da usina de 93 kWp</span></div></div>
-    <div class="np-photo-slot" style="min-height:240px"><div class="np-slot-cap"><span>Detalhe — Infraestrutura de Média Tensão</span></div></div>
+    <div class="np-photo-slot" style="min-height:240px">${photo(PHOTOS.homeUsina93,'Vista geral da usina de 93 kWp')}<div class="np-slot-cap"><span>Fotografia autoral — Vista geral da usina de 93 kWp</span></div></div>
+    <div class="np-photo-slot" style="min-height:240px">${photo(PHOTOS.homeDetalheMt,'Detalhe de Média Tensão')}<div class="np-slot-cap"><span>Detalhe — Infraestrutura de Média Tensão</span></div></div>
   </div>
 </div>
 </section>`

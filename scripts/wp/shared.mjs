@@ -30,6 +30,9 @@ button,.button,input,textarea,select,
 .np-btn-g:hover{transform:none!important}
 /* Zera appearance default do navegador nos inputs (sem inset shadow do tema) */
 button,input,textarea,select{-webkit-appearance:none!important;-moz-appearance:none!important;appearance:none!important}
+/* ── FOTOS: imagem cobre o slot, legenda fica por cima ── */
+.np-photo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;border:0;margin:0;max-width:none;display:block}
+.np-slot-cap,.np-pb-cap{z-index:2}
 </style>`
 
 export const NAVBAR = `${RESET_CSS}
@@ -123,5 +126,29 @@ export const NAVBAR = `${RESET_CSS}
   }
 })();
 </script>`
+
+// ─── MAPA DE FOTOS ──────────────────────────────────────────────────────────
+// Suba cada foto na Biblioteca de Mídia do WordPress e cole a URL aqui.
+// Vazio ('') = mantém o placeholder com gradiente. Depois rode o workflow `all`.
+export const PHOTOS = {
+  // HOME — faixa de 3 fotos logo abaixo do hero
+  homeBandMt:      '', // Infraestrutura elétrica — Quadro de proteção MT
+  homeBandAerea:   '', // Usina fotovoltaica — Vista aérea
+  homeBandFixacao: '', // Detalhe técnico — Fixação e impermeabilização
+  // HOME — outras seções
+  homeEquipe:      '', // Equipe técnica em campo
+  homeUsina93:     '', // Vista geral da usina de 93 kWp
+  homeDetalheMt:   '', // Detalhe — Infraestrutura de Média Tensão
+  // PROJETOS
+  projUsina93:     '', // Vista geral da usina de 93 kWp
+  projDetalheMt:   '', // Detalhe — Infraestrutura de Média Tensão
+  // QUEM SOMOS
+  quemSomosRenan:  '', // Renan Alves — Diretoria Técnica
+}
+
+// Renderiza <img> que cobre o slot quando há URL; senão, mantém o gradiente.
+export function photo(url, alt = '') {
+  return url ? `<img class="np-photo-img" src="${url}" alt="${alt}" loading="lazy" onerror="this.remove()">` : ''
+}
 
 export const FOOTER_LOGO = `<img src="https://neopowerenergia.com.br/wp-content/uploads/2026/04/neo-power-cores-finalbrancookokk-Renan-Alves-1.png" alt="Neo Power" style="height:146px;width:auto;object-fit:contain;margin-bottom:18px;display:block" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;color:#fff;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px">NEO POWER</span>`

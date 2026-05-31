@@ -1,5 +1,5 @@
 import { wpFetch } from '../client.mjs'
-import { NAVBAR } from '../shared.mjs'
+import { NAVBAR, PHOTOS, photo } from '../shared.mjs'
 import { randomBytes } from 'crypto'
 
 const uid = () => randomBytes(4).toString('hex')
@@ -68,7 +68,7 @@ const DIRETOR = `
     </div>
     <div style="display:flex;flex-direction:column;gap:16px">
       <div class="np-ph" style="min-height:340px">
-        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(4,7,14,.9),transparent);padding:20px 22px;z-index:2"><span style="font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:${C.textLo}">Renan Alves — Diretoria Técnica</span></div>
+        ${photo(PHOTOS.quemSomosRenan,'Renan Alves — Diretoria Técnica')}<div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(4,7,14,.9),transparent);padding:20px 22px;z-index:2"><span style="font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:${C.textLo}">Renan Alves — Diretoria Técnica</span></div>
       </div>
       <div class="np-glass" style="padding:24px 28px;border-left:2px solid ${C.blue500}">
         <p style="font-size:13px;font-style:italic;color:${C.textHi};line-height:1.8;margin:0">"O cliente tem a estrutura operacional de uma firma de engenharia, mas com a garantia pessoal e o rigor técnico direto da diretoria."</p>

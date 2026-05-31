@@ -1,5 +1,5 @@
 import { wpFetch } from '../client.mjs'
-import { NAVBAR } from '../shared.mjs'
+import { NAVBAR, PHOTOS, photo } from '../shared.mjs'
 import { randomBytes } from 'crypto'
 
 const uid = () => randomBytes(4).toString('hex')
@@ -95,8 +95,8 @@ const PAGE = `${BASE}
   </div>
 
   <div class="np-strip" style="margin-top:16px">
-    <div class="np-ph" style="min-height:280px"><div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(4,7,14,.82),transparent);padding:16px 18px;z-index:2"><span style="font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:${C.textLo}">Vista geral da usina de 93 kWp</span></div></div>
-    <div class="np-ph" style="min-height:280px"><div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(4,7,14,.82),transparent);padding:16px 18px;z-index:2"><span style="font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:${C.textLo}">Detalhe — Infraestrutura de Média Tensão</span></div></div>
+    <div class="np-ph" style="min-height:280px">${photo(PHOTOS.projUsina93,'Vista geral da usina de 93 kWp')}<div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(4,7,14,.82),transparent);padding:16px 18px;z-index:2"><span style="font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:${C.textLo}">Vista geral da usina de 93 kWp</span></div></div>
+    <div class="np-ph" style="min-height:280px">${photo(PHOTOS.projDetalheMt,'Detalhe de Média Tensão')}<div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(4,7,14,.82),transparent);padding:16px 18px;z-index:2"><span style="font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:${C.textLo}">Detalhe — Infraestrutura de Média Tensão</span></div></div>
   </div>
 </div>
 </section>

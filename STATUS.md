@@ -52,11 +52,34 @@ A stack da Hostinger/Elementor envolve a seção em wrappers que quebram o
 
 ---
 
+## 📸 Fotos do site (slots prontos para receber imagens)
+
+Os "slots" de foto (caixas com gradiente + legenda) agora aceitam imagens
+reais. Mecanismo: o helper `photo(url, alt)` em `shared.mjs` injeta um
+`<img class="np-photo-img">` que **cobre o slot** (object-fit: cover) com a
+legenda por cima; URL vazia mantém o gradiente.
+
+**Como subir as fotos:**
+1. Suba cada imagem na **Biblioteca de Mídia do WordPress**.
+2. Copie a URL e cole no mapa `PHOTOS` em `scripts/wp/shared.mjs`.
+3. Rode o workflow `all` (ou a página específica) para republicar.
+
+**Slots disponíveis (9):**
+- Home: `homeBandMt`, `homeBandAerea`, `homeBandFixacao`, `homeEquipe`,
+  `homeUsina93`, `homeDetalheMt`
+- Projetos: `projUsina93`, `projDetalheMt`
+- Quem Somos: `quemSomosRenan`
+
+> Serviços, Contato e Políticas não têm slots de foto (só logo + texto).
+
+---
+
 ## ⏭️ O que ainda planejamos fazer
 
-1. **Validar o hero ao vivo** (desktop + mobile): confirmar full-bleed,
-   legibilidade do texto e que o vídeo carrega/dá play. Se ainda quebrar,
-   essa é a próxima frente de trabalho.
+1. **Preencher o mapa `PHOTOS`** com as URLs após subir as fotos na biblioteca
+   do WP, e republicar (`all`).
+2. **Validar o hero ao vivo** (desktop + mobile): confirmar full-bleed,
+   legibilidade do texto e que o vídeo carrega/dá play.
 2. **Restaurar `unfiltered_html` no WordPress** → corrige logo + menu
    hambúrguer mobile que não abre. É permissão do **WordPress**, não do
    Elementor (ver "Mitos a evitar").
