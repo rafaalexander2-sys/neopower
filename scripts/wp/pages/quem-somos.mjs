@@ -67,7 +67,7 @@ const DIRETOR = `
       <p style="font-size:13.5px;color:${C.textMid};line-height:1.85">Todo projeto de Média Tensão e Alto Padrão é validado, assinado e inspecionado pessoalmente. Não delegamos a assinatura. Não delegamos a inspeção. O seu projeto é responsabilidade direta de quem fundou a empresa.</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:16px">
-      <div class="np-ph" style="aspect-ratio:4/5">
+      <div class="np-ph" style="aspect-ratio:16/9">
         ${photo(PHOTOS.quemSomosRenan,'Renan Alves — Diretoria Técnica','center 18%')}<div class="np-cap" style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(4,7,14,.9),transparent);padding:20px 22px;z-index:2"><span style="font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:${C.textLo}">Renan Alves — Diretoria Técnica</span></div>
       </div>
       <div class="np-glass" style="padding:24px 28px;border-left:2px solid ${C.blue500}">
