@@ -176,4 +176,34 @@ export function photo(url, alt = '', pos = '') {
   return url ? `<img class="np-photo-img" src="${url}" alt="${alt}" loading="lazy"${st} onerror="this.remove()">` : ''
 }
 
+// ─── BACKGROUND DAS HEROES ──────────────────────────────────────────────────
+// Imagem de fundo atrás da hero de cada página (desktop + mobile).
+// Suba na Biblioteca de Mídia do WP e cole as URLs. Vazio = sem imagem (mantém
+// o fundo atual). O overlay escuro é aplicado automático p/ o texto ficar legível.
+export const HERO_BG = {
+  quemSomos: {
+    desk: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/ChatGPT-Image-May-31-2026-04_17_49-PM.png',
+    mob:  'https://neopowerenergia.com.br/wp-content/uploads/2026/05/ChatGPT-Image-May-31-2026-04_17_01-PM.png',
+  },
+  servicos: { desk: '', mob: '' },
+  projetos: { desk: '', mob: '' },
+  contato:  { desk: '', mob: '' },
+  home:     { desk: '', mob: '' },
+}
+
+// Gera o <style> + a camada de fundo (com overlay) para injetar dentro da <section> da hero.
+export function heroBg(key) {
+  const b = HERO_BG[key]
+  if (!b || !b.desk) return ''
+  const mob = b.mob || b.desk
+  // overlay desktop: escuro à esquerda (onde fica o texto) → clareia à direita
+  const ovD = 'linear-gradient(90deg,rgba(4,7,14,.95) 0%,rgba(4,7,14,.72) 42%,rgba(4,7,14,.42) 100%)'
+  // overlay mobile: escuro em cima (onde fica o texto) → base levemente escura
+  const ovM = 'linear-gradient(180deg,rgba(4,7,14,.88) 0%,rgba(4,7,14,.55) 55%,rgba(4,7,14,.82) 100%)'
+  return `<style>
+.np-hb-${key}{position:absolute;inset:0;z-index:0;background:${ovD},url('${b.desk}') center/cover no-repeat;pointer-events:none}
+@media(max-width:768px){.np-hb-${key}{background:${ovM},url('${mob}') center/cover no-repeat}}
+</style><div class="np-hb-${key}" aria-hidden="true"></div>`
+}
+
 export const FOOTER_LOGO = `<img src="https://neopowerenergia.com.br/wp-content/uploads/2026/04/neo-power-cores-finalbrancookokk-Renan-Alves-1.png" alt="Neo Power" style="height:146px;width:auto;object-fit:contain;margin-bottom:18px;display:block" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;color:#fff;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px">NEO POWER</span>`
