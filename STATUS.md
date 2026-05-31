@@ -74,11 +74,23 @@ legenda por cima; URL vazia mantém o gradiente.
 
 ---
 
+**Estado atual:** 8/9 slots preenchidos com fotos reais (Home + Projetos).
+A foto `foreman-businessman-solar-energy-station` está no slot de Rigor Técnico
+da Home (`homeEquipe`). Falta só `quemSomosRenan` (retrato do Renan, sem foto ainda).
+
+**Galeria de Serviços:** a página `/servicos` ganhou uma seção "Projetos
+Realizados" (`GALERIA` em `servicos.mjs`) com as 6 fotos de projeto em cards —
+nome do cliente + dados **fictícios** (`PROJETOS_GAL`). Ajustar dados reais depois.
+
+---
+
 ## ⏭️ O que ainda planejamos fazer
 
-1. **Preencher o mapa `PHOTOS`** com as URLs após subir as fotos na biblioteca
-   do WP, e republicar (`all`).
-2. **Validar o hero ao vivo** (desktop + mobile): confirmar full-bleed,
+1. **Republicar** com `all` para subir as fotos + galeria ao ar.
+2. **Ajustar dados reais** dos projetos na galeria (`PROJETOS_GAL` em `servicos.mjs`)
+   — hoje são fictícios.
+3. **Foto do Renan** (`quemSomosRenan`) quando houver retrato.
+4. **Validar o hero ao vivo** (desktop + mobile): confirmar full-bleed,
    legibilidade do texto e que o vídeo carrega/dá play.
 2. **Restaurar `unfiltered_html` no WordPress** → corrige logo + menu
    hambúrguer mobile que não abre. É permissão do **WordPress**, não do

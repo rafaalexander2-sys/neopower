@@ -134,18 +134,18 @@ export const NAVBAR = `${RESET_CSS}
 // Vazio ('') = mantém o placeholder com gradiente. Depois rode o workflow `all`.
 export const PHOTOS = {
   // HOME — faixa de 3 fotos logo abaixo do hero
-  homeBandMt:      '', // Infraestrutura elétrica — Quadro de proteção MT
-  homeBandAerea:   '', // Usina fotovoltaica — Vista aérea
-  homeBandFixacao: '', // Detalhe técnico — Fixação e impermeabilização
+  homeBandMt:      'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20220304_135550_0199-scaled.jpg', // Infraestrutura elétrica — Quadro de proteção MT
+  homeBandAerea:   'https://neopowerenergia.com.br/wp-content/uploads/2026/05/DJI_0608-scaled.jpg', // Usina fotovoltaica — Vista aérea
+  homeBandFixacao: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20200310_180525_0006-scaled.jpg', // Detalhe técnico — Fixação e impermeabilização
   // HOME — outras seções
-  homeEquipe:      '', // Equipe técnica em campo
-  homeUsina93:     '', // Vista geral da usina de 93 kWp
-  homeDetalheMt:   '', // Detalhe — Infraestrutura de Média Tensão
+  homeEquipe:      'https://neopowerenergia.com.br/wp-content/uploads/2026/04/foreman-businessman-solar-energy-station-scaled.jpg', // Rigor Técnico — equipe em campo
+  homeUsina93:     'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20250107_190316_0001-scaled.jpg', // Vista geral da usina de 93 kWp
+  homeDetalheMt:   'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20200603_135750_0063-scaled.jpg', // Detalhe — Infraestrutura de Média Tensão
   // PROJETOS
-  projUsina93:     '', // Vista geral da usina de 93 kWp
-  projDetalheMt:   '', // Detalhe — Infraestrutura de Média Tensão
+  projUsina93:     'https://neopowerenergia.com.br/wp-content/uploads/2026/05/DJI_0608-scaled.jpg', // Vista geral da usina de 93 kWp
+  projDetalheMt:   'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20240130_185623_0430-scaled.jpg', // Detalhe — Infraestrutura de Média Tensão
   // QUEM SOMOS
-  quemSomosRenan:  '', // Renan Alves — Diretoria Técnica
+  quemSomosRenan:  '', // Renan Alves — Diretoria Técnica (sem foto ainda)
 }
 
 // Renderiza <img> que cobre o slot quando há URL; senão, mantém o gradiente.

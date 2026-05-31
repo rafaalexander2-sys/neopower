@@ -122,6 +122,51 @@ const CTA = `
 </div>
 </section>`
 
+// Galeria de projetos realizados. Dados fictícios — ajustar depois.
+const PROJETOS_GAL = [
+  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20250107_190316_0001-scaled.jpg', nome: 'Paulo Sodré',     tipo: 'Residencial Alto Padrão', dados: '92 kWp · Itaipava — RJ' },
+  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/DJI_0608-scaled.jpg',                  nome: 'Marina Castro',    tipo: 'Usina Solo',             dados: '210 kWp · Médio Tensão' },
+  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20220304_135550_0199-scaled.jpg',  nome: 'Eduardo Lima',     tipo: 'Industrial — MT',        dados: '120 kWp · Demanda Contratada' },
+  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20200310_180525_0006-scaled.jpg',  nome: 'Ricardo Menezes',  tipo: 'Comercial',              dados: '48 kWp · Petrópolis — RJ' },
+  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20200603_135750_0063-scaled.jpg',  nome: 'Fernando Alves',   tipo: 'Residencial',            dados: '36 kWp · Teresópolis — RJ' },
+  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20240130_185623_0430-scaled.jpg',  nome: 'Beatriz Tavares',  tipo: 'Rural / Agro',           dados: '75 kWp · Demanda Contratada' },
+]
+
+const galCard = p => `
+  <div class="np-gal-card">
+    <img class="np-gal-img" src="${p.img}" alt="${p.nome}" loading="lazy" onerror="this.style.display='none'">
+    <div class="np-gal-meta">
+      <div class="np-gal-tipo">${p.tipo}</div>
+      <div class="np-gal-name">${p.nome}</div>
+      <div class="np-gal-data">${p.dados}</div>
+    </div>
+  </div>`
+
+const GALERIA = `
+<style>
+#np-galeria{background:${C.bgBase};padding:96px 0;border-top:1px solid ${C.line}}
+.np-gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.np-gal-card{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid ${C.line};background:linear-gradient(135deg,#0C1221,#080D1A);border-radius:0}
+.np-gal-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .5s ease}
+.np-gal-card:hover .np-gal-img{transform:scale(1.05)}
+.np-gal-meta{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:22px 18px 16px;background:linear-gradient(to top,rgba(4,7,14,.94),rgba(4,7,14,.45) 55%,transparent)}
+.np-gal-tipo{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:${C.blue400};margin-bottom:7px}
+.np-gal-name{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.01em;margin-bottom:3px}
+.np-gal-data{font-size:11px;font-weight:600;letter-spacing:.04em;color:${C.textMid}}
+@media(max-width:900px){.np-gal-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.np-gal-grid{grid-template-columns:1fr}}
+</style>
+<section id="np-galeria">
+<div class="np-wrap">
+  <div class="np-label">Projetos Realizados</div>
+  <h2 class="np-h2">Engenharia Entregue<br>em Campo.</h2>
+  <p style="font-size:14.5px;color:${C.textMid};max-width:480px;line-height:1.8">Seleção de projetos executados sob o Protocolo Proprietário — da residência de alto padrão à usina de solo em Média Tensão.</p>
+  <div class="np-gal-grid">
+    ${PROJETOS_GAL.map(galCard).join('')}
+  </div>
+</div>
+</section>`
+
 const FOOTER = `
 <style>
 .np-footer{background:${C.bgSurface};border-top:1px solid ${C.line}}
@@ -146,7 +191,7 @@ const FOOTER = `
   </div>
 </footer>`
 
-const pageData = [htmlSec(NAVBAR), htmlSec(HERO), htmlSec(SERVICOS), htmlSec(PROCESSO), htmlSec(CTA), htmlSec(FOOTER)]
+const pageData = [htmlSec(NAVBAR), htmlSec(HERO), htmlSec(SERVICOS), htmlSec(GALERIA), htmlSec(PROCESSO), htmlSec(CTA), htmlSec(FOOTER)]
 
 async function run() {
   console.log('⚙️  Construindo página Serviços...\n')
