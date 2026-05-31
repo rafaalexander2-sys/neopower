@@ -36,7 +36,9 @@ const PAGE = `
 .np-f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
 .np-ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
 .np-ct-info-item{padding-bottom:24px;margin-bottom:24px;border-bottom:1px solid ${C.line}}
+.np-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;margin-bottom:52px}
 @media(max-width:900px){.np-ct-grid{grid-template-columns:1fr!important;gap:52px!important}.np-wrap{padding:0 24px}}
+@media(max-width:768px){.np-footer-grid{grid-template-columns:1fr!important;gap:40px!important}}
 @media(max-width:600px){.np-f-row{grid-template-columns:1fr!important}}
 </style>
 
@@ -84,7 +86,7 @@ const PAGE = `
 <footer style="background:${C.bgSurface};border-top:1px solid ${C.line}">
   <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(74,144,217,.25),transparent)"></div>
   <div style="max-width:1180px;margin:0 auto;padding:60px 48px 36px">
-    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;margin-bottom:52px">
+    <div class="np-footer-grid">
       <div><img src="https://neopowerenergia.com.br/wp-content/uploads/2026/04/neo-power-cores-finalbrancookokk-Renan-Alves-1.png" alt="Neo Power" style="height:146px;width:auto;object-fit:contain;margin-bottom:18px;display:block" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;color:#fff;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px">NEO POWER</span><p style="font-size:13px;color:${C.textLo};line-height:1.75;max-width:270px">Engenharia fotovoltaica de alta complexidade. Tolerância zero a falhas.</p></div>
       <div><p style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:${C.textLo};margin-bottom:22px">Menu</p><div style="display:flex;flex-direction:column;gap:13px"><a href="/" style="font-size:13.5px;color:${C.textLo};text-decoration:none">Home</a><a href="/quem-somos" style="font-size:13.5px;color:${C.textLo};text-decoration:none">Quem Somos</a><a href="/projetos" style="font-size:13.5px;color:${C.textLo};text-decoration:none">Projetos</a><a href="/servicos" style="font-size:13.5px;color:${C.textLo};text-decoration:none">Serviços</a><a href="/contato" style="font-size:13.5px;color:${C.textLo};text-decoration:none">Contato</a></div></div>
       <div><p style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:${C.textLo};margin-bottom:22px">Contato</p><div style="font-size:13.5px;color:${C.textLo};line-height:2"><a href="tel:+5524981114255" style="color:${C.textLo};text-decoration:none">(24) 9 8111-4255</a><br><a href="mailto:neopowerbr@gmail.com" style="color:${C.textLo};text-decoration:none">neopowerbr@gmail.com</a><br>Est. União e Indústria, 9200<br>Loja D5 — Itaipava, Petrópolis · RJ</div></div>

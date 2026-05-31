@@ -124,17 +124,17 @@ const CTA = `
 
 // Galeria de projetos realizados. Dados fictícios — ajustar depois.
 const PROJETOS_GAL = [
-  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20250107_190316_0001-scaled.jpg', nome: 'Paulo Sodré',     tipo: 'Residencial Alto Padrão', dados: '92 kWp · Itaipava — RJ' },
-  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/DJI_0608-scaled.jpg',                  nome: 'Marina Castro',    tipo: 'Usina Solo',             dados: '210 kWp · Médio Tensão' },
-  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20220304_135550_0199-scaled.jpg',  nome: 'Eduardo Lima',     tipo: 'Industrial — MT',        dados: '120 kWp · Demanda Contratada' },
-  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20200310_180525_0006-scaled.jpg',  nome: 'Ricardo Menezes',  tipo: 'Comercial',              dados: '48 kWp · Petrópolis — RJ' },
-  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20200603_135750_0063-scaled.jpg',  nome: 'Fernando Alves',   tipo: 'Residencial',            dados: '36 kWp · Teresópolis — RJ' },
-  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20240130_185623_0430-scaled.jpg',  nome: 'Beatriz Tavares',  tipo: 'Rural / Agro',           dados: '75 kWp · Demanda Contratada' },
+  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20250107_190316_0001-scaled.jpg', nome: 'Paulo Sodré',     tipo: 'Residencial Alto Padrão', dados: '92 kWp · Itaipava — RJ',         pos: 'center' },
+  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/DJI_0608-scaled.jpg',                  nome: 'Marina Castro',    tipo: 'Usina Solo',             dados: '210 kWp · Média Tensão',         pos: 'center 72%' },
+  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20220304_135550_0199-scaled.jpg',  nome: 'Eduardo Lima',     tipo: 'Industrial — MT',        dados: '120 kWp · Demanda Contratada',   pos: 'center' },
+  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20200310_180525_0006-scaled.jpg',  nome: 'Ricardo Menezes',  tipo: 'Comercial',              dados: '48 kWp · Petrópolis — RJ',       pos: 'center' },
+  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20200603_135750_0063-scaled.jpg',  nome: 'Fernando Alves',   tipo: 'Residencial',            dados: '36 kWp · Teresópolis — RJ',      pos: 'center' },
+  { img: 'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20240130_185623_0430-scaled.jpg',  nome: 'Beatriz Tavares',  tipo: 'Rural / Agro',           dados: '75 kWp · Demanda Contratada',    pos: 'center 60%' },
 ]
 
 const galCard = p => `
   <div class="np-gal-card">
-    <img class="np-gal-img" src="${p.img}" alt="${p.nome}" loading="lazy" onerror="this.style.display='none'">
+    <img class="np-gal-img" src="${p.img}" alt="${p.nome}" loading="lazy" style="object-position:${p.pos || 'center'}" onerror="this.style.display='none'">
     <div class="np-gal-meta">
       <div class="np-gal-tipo">${p.tipo}</div>
       <div class="np-gal-name">${p.nome}</div>
