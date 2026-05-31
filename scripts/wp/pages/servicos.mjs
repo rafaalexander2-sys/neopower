@@ -187,7 +187,7 @@ const FOOTER = `
       <div><p style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:${C.textLo};margin-bottom:22px">Menu</p><ul class="np-footer-links"><li><a href="/">Home</a></li><li><a href="/quem-somos">Quem Somos</a></li><li><a href="/projetos">Projetos</a></li><li><a href="/servicos">Serviços</a></li><li><a href="/contato">Contato</a></li></ul></div>
       <div><p style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:${C.textLo};margin-bottom:22px">Contato</p><div class="np-fc" style="font-size:13.5px;color:${C.textLo};line-height:2"><a href="https://wa.me/5524981114255" target="_blank" rel="noopener">(24) 9 8111-4255</a><br><a href="mailto:neopowerbr@gmail.com">neopowerbr@gmail.com</a><br>Est. União e Indústria, 9200<br>Loja D5 — Itaipava, Petrópolis · RJ</div></div>
     </div>
-    <div class="np-footer-bottom"><span style="font-size:11.5px;color:${C.textLo};opacity:.6">© 2026 Neo Power · CNPJ 40.904.108/0001-23 · Todos os direitos reservados.</span><a href="/politicas" style="font-size:11.5px;color:${C.textLo};opacity:.6;text-decoration:none">Políticas de Privacidade</a></div>
+    <div class="np-footer-bottom"><span style="font-size:11.5px;color:${C.textLo};opacity:.6">© 2026 Neo Power · CNPJ 40.904.108/0001-23 · Todos os direitos reservados. · <a href="https://casacriative.com.br/sites-e-landing-pages" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Design by Casa Criative Digital</a></span><a href="/politicas" style="font-size:11.5px;color:${C.textLo};opacity:.6;text-decoration:none">Políticas de Privacidade</a></div>
   </div>
 </footer>`
 

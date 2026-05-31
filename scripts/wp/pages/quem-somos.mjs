@@ -179,7 +179,7 @@ const FOOTER = `
       </div>
     </div>
     <div class="np-footer-bottom">
-      <span style="font-size:11.5px;color:${C.textLo};opacity:.6">© 2026 Neo Power · CNPJ 40.904.108/0001-23 · Todos os direitos reservados.</span>
+      <span style="font-size:11.5px;color:${C.textLo};opacity:.6">© 2026 Neo Power · CNPJ 40.904.108/0001-23 · Todos os direitos reservados. · <a href="https://casacriative.com.br/sites-e-landing-pages" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Design by Casa Criative Digital</a></span>
       <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
         <a href="/politicas" style="font-size:11.5px;color:${C.textLo};opacity:.6;text-decoration:none">Políticas de Privacidade</a>
         <span style="font-size:11.5px;color:${C.textLo};opacity:.6">Itaipava · Petrópolis · RJ</span>
