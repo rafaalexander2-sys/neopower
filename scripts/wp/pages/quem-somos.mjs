@@ -172,7 +172,7 @@ const FOOTER = `
       <div>
         <p style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:${C.textLo};margin-bottom:22px">Contato</p>
         <div class="np-footer-contact" style="font-size:13.5px;color:${C.textLo};line-height:2">
-          <a href="tel:+5524981114255">(24) 9 8111-4255</a><br>
+          <a href="https://wa.me/5524981114255" target="_blank" rel="noopener">(24) 9 8111-4255</a><br>
           <a href="mailto:neopowerbr@gmail.com">neopowerbr@gmail.com</a><br>
           Est. União e Indústria, 9200<br>Loja D5 — Itaipava, Petrópolis · RJ
         </div>

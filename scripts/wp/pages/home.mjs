@@ -343,22 +343,27 @@ const CONTATO = `
       <div class="np-label">Iniciar Projeto</div>
       <h2 class="np-h2">Inicie o Seu Estudo de Viabilidade.</h2>
       <p style="font-size:13.5px;color:${C.textMid};line-height:1.85;margin-bottom:36px">Não fornecemos orçamentos genéricos. Para manter o rigor de nossa entrega, filtramos cada solicitação através de uma análise técnica preliminar.</p>
-      <form style="display:flex;flex-direction:column">
+      <form action="https://formsubmit.co/neopowerbr@gmail.com" method="POST" style="display:flex;flex-direction:column">
+        <input type="hidden" name="_subject" value="Nova solicitação — site Neo Power (Home)">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://neopowerenergia.com.br/?enviado=1">
         <div class="np-f-row">
-          <div><label class="np-f-lbl">Nome Completo</label><input class="np-input" type="text" placeholder="Seu nome" required></div>
-          <div><label class="np-f-lbl">Empresa</label><input class="np-input" type="text" placeholder="Empresa ou patrimônio"></div>
+          <div><label class="np-f-lbl">Nome Completo</label><input class="np-input" type="text" name="Nome" placeholder="Seu nome" required></div>
+          <div><label class="np-f-lbl">Empresa</label><input class="np-input" type="text" name="Empresa" placeholder="Empresa ou patrimônio"></div>
         </div>
-        <div class="np-f-grp"><label class="np-f-lbl">Localização do Imóvel</label><input class="np-input" type="text" placeholder="Cidade, bairro ou endereço" required></div>
+        <div class="np-f-grp"><label class="np-f-lbl">Localização do Imóvel</label><input class="np-input" type="text" name="Localizacao" placeholder="Cidade, bairro ou endereço" required></div>
         <div class="np-f-row">
-          <div><label class="np-f-lbl">Consumo Médio / Demanda Contratada</label><input class="np-input" type="text" placeholder="Ex.: 1.200 kWh ou 50 kW"></div>
-          <div><label class="np-f-lbl">Tipo de Telhado / Estrutura</label><select class="np-input" style="cursor:pointer"><option value="">Selecione</option><option>Telhado cerâmico</option><option>Telhado metálico (trapezoidal)</option><option>Laje</option><option>Fibrocimento</option><option>Solo / Estrutura dedicada</option><option>Outro</option></select></div>
+          <div><label class="np-f-lbl">Consumo Médio / Demanda Contratada</label><input class="np-input" type="text" name="Consumo" placeholder="Ex.: 1.200 kWh ou 50 kW"></div>
+          <div><label class="np-f-lbl">Tipo de Telhado / Estrutura</label><select class="np-input" name="Tipo de Telhado" style="cursor:pointer"><option value="">Selecione</option><option>Telhado cerâmico</option><option>Telhado metálico (trapezoidal)</option><option>Laje</option><option>Fibrocimento</option><option>Solo / Estrutura dedicada</option><option>Outro</option></select></div>
         </div>
-        <div class="np-f-grp"><label class="np-f-lbl">O que é inegociável no seu projeto?</label><textarea class="np-input" rows="4" placeholder="Descreva exigências estéticas, restrições técnicas, prazos ou qualquer aspecto que não pode ser comprometido." style="resize:vertical"></textarea></div>
+        <div class="np-f-grp"><label class="np-f-lbl">O que é inegociável no seu projeto?</label><textarea class="np-input" name="Inegociavel" rows="4" placeholder="Descreva exigências estéticas, restrições técnicas, prazos ou qualquer aspecto que não pode ser comprometido." style="resize:vertical"></textarea></div>
         <button type="submit" class="np-btn-p" style="width:100%;margin-top:4px">Enviar Solicitação</button>
       </form>
     </div>
     <div style="padding-top:8px">
-      <div class="np-ct-info-item"><div class="np-ct-info-lbl">Telefone / WhatsApp</div><a href="tel:+5524981114255" style="font-size:14.5px;color:${C.textMid};text-decoration:none">(24) 9 8111-4255</a></div>
+      <div class="np-ct-info-item"><div class="np-ct-info-lbl">Telefone / WhatsApp</div><a href="https://wa.me/5524981114255" target="_blank" rel="noopener" style="font-size:14.5px;color:${C.textMid};text-decoration:none">(24) 9 8111-4255</a></div>
+      <div class="np-ct-info-item"><div class="np-ct-info-lbl">Horário de Atendimento</div><span style="font-size:14.5px;color:${C.textMid}">Segunda a Sexta · 9h às 18h</span></div>
       <div class="np-ct-info-item"><div class="np-ct-info-lbl">Escritório Técnico</div><div style="font-size:13.5px;color:${C.textMid};line-height:1.9">Estrada União e Indústria, 9200<br>Loja D5 — Itaipava<br>Petrópolis — RJ<br><span style="display:block;margin-top:8px;font-size:11.5px;color:${C.blue400};font-weight:600;letter-spacing:.04em">Atendimento exclusivamente por agendamento.</span></div></div>
       <div class="np-ct-info-item"><div class="np-ct-info-lbl">CNPJ</div><span style="font-size:13.5px;color:${C.textMid}">40.904.108/0001-23</span></div>
       <div class="np-glass" style="padding:22px 24px;border-left:2px solid ${C.blue700}"><p style="font-size:12.5px;color:${C.textLo};line-height:1.8;margin:0"><strong style="color:${C.textMid};font-weight:600">Por que um formulário de qualificação?</strong><br>Não trabalhamos com orçamentos genéricos. Cada projeto exige análise técnica preliminar — irradiação, consumo, configuração elétrica, tipo de telhado — antes de qualquer proposta.</p></div>
@@ -409,7 +414,7 @@ const FOOTER = `
       <div>
         <p style="font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:${C.textLo};margin-bottom:22px">Contato</p>
         <div class="np-footer-contact" style="font-size:13.5px;color:${C.textLo};line-height:2">
-          <a href="tel:+5524981114255">(24) 9 8111-4255</a><br>
+          <a href="https://wa.me/5524981114255" target="_blank" rel="noopener">(24) 9 8111-4255</a><br>
           <a href="mailto:neopowerbr@gmail.com">neopowerbr@gmail.com</a><br>
           Est. União e Indústria, 9200<br>Loja D5 — Itaipava, Petrópolis · RJ
         </div>

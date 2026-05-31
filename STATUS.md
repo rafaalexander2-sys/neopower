@@ -91,6 +91,27 @@ nome do cliente + dados **fictícios** (`PROJETOS_GAL`). Ajustar dados reais dep
 
 ---
 
+## 📨 Formulários (envio por e-mail) — AÇÃO NECESSÁRIA
+
+Os formulários (Home + Contato) enviam para **neopowerbr@gmail.com** via
+**FormSubmit.co** (sem backend, sem conta). `action`/`name`/hidden fields já
+configurados em `home.mjs` e `contato.mjs`.
+
+> ⚠️ **Ativação única:** no **primeiro envio** após publicar, o FormSubmit manda
+> um e-mail de confirmação para neopowerbr@gmail.com. É preciso **clicar no link**
+> uma vez para ativar; depois disso todos os envios chegam normalmente.
+> Após enviar, o usuário é redirecionado para `neopowerenergia.com.br/?enviado=1`.
+
+## 📱 WhatsApp
+
+- **Botão flutuante** (verde, canto inferior direito) em todas as páginas —
+  injetado via `NAVBAR` (`WHATSAPP_FLOAT` em `shared.mjs`).
+- Número: **5524981114255**. Todas as menções do telefone agora linkam para
+  `wa.me` (antes eram `tel:`).
+- **Contato** tem CTA verde de WhatsApp (`WA_BUTTON`) + **Horário: Seg–Sex 9h–18h**.
+- Bug do `<select>` corrigido (texto das opções estava na cor do fundo) — regra
+  `.np-input option` no RESET de `shared.mjs`.
+
 ## ⏭️ O que ainda planejamos fazer
 
 1. **Republicar** com `all` para subir as fotos + galeria ao ar.
