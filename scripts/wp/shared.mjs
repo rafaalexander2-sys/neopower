@@ -145,7 +145,7 @@ export const PHOTOS = {
   projUsina93:     'https://neopowerenergia.com.br/wp-content/uploads/2026/05/DJI_0608-scaled.jpg', // Vista geral da usina de 93 kWp
   projDetalheMt:   'https://neopowerenergia.com.br/wp-content/uploads/2026/05/IMG_20240130_185623_0430-scaled.jpg', // Detalhe — Infraestrutura de Média Tensão
   // QUEM SOMOS
-  quemSomosRenan:  '', // Renan Alves — Diretoria Técnica (sem foto ainda)
+  quemSomosRenan:  'https://neopowerenergia.com.br/wp-content/uploads/2026/05/renan-ia.png', // Renan Alves — Diretoria Técnica
 }
 
 // Renderiza <img> que cobre o slot quando há URL; senão, mantém o gradiente.
